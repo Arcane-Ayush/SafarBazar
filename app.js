@@ -528,21 +528,18 @@ const views = {
                     </div>`).join('')}
                 </div>
                 <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;">Most Read Guides</h2>
-                <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;flex-direction:column;gap:16px;">
                     ${[
-            { title: 'Step by step onboarding process', time: '5 min read', icon: 'ph-list-checks', bg: '#E8F3EA', ic: 'var(--primary)' },
-            { title: 'How to find the perfect location for your business ?', time: '15 min read', icon: 'ph-map-pin', bg: '#EFF6FF', ic: '#3B82F6' },
-            { title: 'What licenses do I need to operate ?', time: '30 min read', icon: 'ph-file-text', bg: '#FFF7ED', ic: '#F97316' },
+            { title: 'Step by step onboarding process', time: '5 min read', img: 'image1.png' },
+            { title: 'How to find the perfect location for your business ?', time: '15 min read', img: 'image2.png' },
+            { title: 'what licenses do I need to operate ?', time: '30 min read', img: 'image3.png' },
         ].map(g => `
-                    <div style="background:white;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06);">
-                        <div style="width:44px;height:44px;border-radius:12px;background:${g.bg};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <i class="ph ${g.icon}" style="font-size:20px;color:${g.ic};"></i>
+                    <div style="background:white;border-radius:20px;overflow:hidden;display:flex;align-items:stretch;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.06); height: 140px;">
+                        <div style="width: 40%; background: url('${g.img}') center/cover; flex-shrink: 0;"></div>
+                        <div style="flex:1; padding: 20px; display: flex; flex-direction: column; justify-content: center;">
+                            <div style="font-size:15px;font-weight:700;color:var(--text-main);line-height:1.4;margin-bottom:12px;">${g.title}</div>
+                            <div style="font-size:13px;color:var(--text-muted);">${g.time}</div>
                         </div>
-                        <div style="flex:1;min-width:0;">
-                            <div style="font-size:14px;font-weight:600;color:var(--text-main);line-height:1.4;margin-bottom:4px;">${g.title}</div>
-                            <div style="font-size:12px;color:var(--text-muted);">${g.time}</div>
-                        </div>
-                        <i class="ph ph-caret-right" style="font-size:16px;color:var(--text-muted);flex-shrink:0;"></i>
                     </div>`).join('')}
                 </div>
             </div>
@@ -744,12 +741,10 @@ const views = {
                     </div>
                     
                     <!-- Contact icons as floating pill over the border -->
-                    <div id="vendor-contact-pill" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10; white-space: nowrap; transition: box-shadow 0.2s;">
-                        <i class="ph ph-phone" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
-                        <div style="width: 44px; height: 32px; background: #E8F3EA; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="navigateTo('enquiry')">
-                            <i class="ph ph-envelope" style="font-size: 20px; color: var(--primary);"></i>
-                        </div>
-                        <i class="ph ph-paper-plane-tilt" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
+                    <div id="vendor-contact-pill" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: white; padding: 12px 36px; border-radius: 40px; display: flex; gap: 40px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10; white-space: nowrap; transition: box-shadow 0.2s;">
+                        <i class="ph ph-phone" style="font-size: 26px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
+                        <i class="ph ph-envelope" style="font-size: 26px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'; setTimeout(() => navigateTo('enquiry'), 150);"></i>
+                        <i class="ph ph-paper-plane-tilt" style="font-size: 26px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
                     </div>
                 </div>
             </div>
@@ -758,10 +753,10 @@ const views = {
             <div id="photos-section" style="padding: 0 0 20px;">
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">View Photos</h3>
                 <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
-                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
-                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
-                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
-                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
                 </div>
             </div>
 
@@ -775,9 +770,9 @@ const views = {
             { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely.' },
             { name: 'Divya R.', text: 'Highly recommended for anyone starting their fitness business journey.' },
         ].map(r => `
-                    <div style="width: 260px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6;">
-                        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">${r.name}</h4>
-                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">${r.text}</p>
+                    <div style="width: 280px; min-height: 160px; background: white; padding: 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-weight: 700; margin-bottom: 10px; font-size: 16px;">${r.name}</h4>
+                        <p style="font-size: 15px; color: var(--text-muted); line-height: 1.5;">${r.text}</p>
                     </div>`).join('')}
                 </div>
             </div>
