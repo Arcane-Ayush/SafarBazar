@@ -65,7 +65,7 @@ const views = {
     `,
     welcome: () => `
         <div class="onboarding-screen">
-            <div class="top-half" style="display: flex; align-items: center; justify-content: center; background: var(--primary);">
+            <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary);">
                 <div style="font-size: 32px; font-weight: 700; color: #10B981;">Safar Bazaar</div>
             </div>
             <div class="bottom-half" style="position: relative; overflow: hidden; padding: 0;">
@@ -557,7 +557,7 @@ const views = {
                     <div style="display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; opacity: 0.9;">
                         <i class="ph ph-map-pin" style="font-size: 14px;"></i> Noida, Uttar Pradesh
                     </div>
-                    <div style="background: #DFE2F9; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; color: #131927;" onclick="navigateTo('choosing_setup')">Change Business Type</div>
+                    <div style="background: #DFE2F9; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; color: #131927;" onclick="navigateTo('business_type')">Change Business Type</div>
                 </div>
 
                 <h1 style="font-size: 32px; font-weight: 800; margin: 12px 0 20px; letter-spacing: -0.5px; text-align: center;">${state.lastVendorTitle || title}</h1>
@@ -568,7 +568,7 @@ const views = {
                 </div>
             </div>
             
-            <div style="padding: 16px 20px 4px; display: flex; gap: 10px; flex-shrink: 0;">
+            <div id="vendor-pills-container" style="padding: 16px 20px 4px; display: flex; gap: 10px; flex-shrink: 0;">
                 ${(() => {
             const all = [];
             const show4 = ['Fitness Vendors', 'Vendors'].includes(title);
@@ -583,7 +583,7 @@ const views = {
         })()}
             </div>
 
-            <div style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; padding-bottom: 30px;">
+            <div id="vendor-list-container" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; padding-bottom: 30px;">
                 ${(() => {
             const isRefurbishedView = (state.lastVendorTitle || title) === 'Refurbished Products';
             
@@ -867,9 +867,9 @@ const views = {
                 
                 <div style="position: absolute; top: 255px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
                     <span style="font-size: 14px; font-weight: 500; color: white;">Seller Mode</span>
-                    <label style="position: relative; display: inline-block; width: 44px; height: 24px;">
+                    <label style="position: relative; display: inline-block; width: 44px; height: 24px;" >
                         <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
-                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.3); border-radius: 24px; transition: .4s;"></span>
+                        <span onclick="event.stopPropagation(); alert('Seller Mode is not implemented');" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.3); border-radius: 24px; transition: .4s;"></span>
                         <span style="position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: .4s;"></span>
                     </label>
                 </div>
@@ -1722,17 +1722,41 @@ function showVendorListing(title) {
 
 function toggleRefurbishedItems() {
     state.showRefurbishedItems = !state.showRefurbishedItems;
-    // Re-render the current view (vendor_listing)
-    const mainContent = document.getElementById('main-content');
-    mainContent.innerHTML = views['vendor_listing'](state.lastVendorTitle);
     
-    // Re-inject Global Navbar
-    const navbarHTML = getGlobalNavbarHTML(state.currentView);
-    if (navbarHTML) {
-        mainContent.insertAdjacentHTML('beforeend', navbarHTML);
+    const listContainer = document.getElementById('vendor-list-container');
+    const pillsContainer = document.getElementById('vendor-pills-container');
+    
+    if (listContainer && pillsContainer) {
+        // Smooth transition for the list content
+        gsap.to(listContainer, { 
+            opacity: 0, 
+            y: 10, 
+            duration: 0.15, 
+            onComplete: () => {
+                // Create a temporary element to parse the new view HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = views['vendor_listing'](state.lastVendorTitle);
+                
+                // Extract only the parts we need to update
+                const newListHTML = tempDiv.querySelector('#vendor-list-container').innerHTML;
+                const newPillsHTML = tempDiv.querySelector('#vendor-pills-container').innerHTML;
+                
+                // Update the DOM
+                listContainer.innerHTML = newListHTML;
+                pillsContainer.innerHTML = newPillsHTML;
+                
+                // Reset scroll position and animate back in
+                listContainer.scrollTop = 0;
+                gsap.fromTo(listContainer, 
+                    { opacity: 0, y: -10 }, 
+                    { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }
+                );
+            }
+        });
+    } else {
+        // Fallback to full navigation if DOM elements aren't ready
+        navigateTo('vendor_listing');
     }
-    
-    setTimeout(() => attachNavbarScrollHide(), 50);
 }
 
 function openChat(chatId) {
@@ -1965,3 +1989,16 @@ function closeFilterSheet() {
     });
     gsap.to(sheet, { bottom: '-100%', duration: 0.3, ease: 'power2.in' });
 }
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open("app-cache").then(cache => {
+      return cache.addAll([
+        "/",
+        "/index.html",
+        "/style.css",
+        "/script.js"
+      ]);
+    })
+  );
+});
