@@ -474,7 +474,7 @@ const views = {
                     <p style="font-size: 13px; color: var(--text-muted);">Find answers to all your questions</p>
                 </div>
             </div>
-            <div style="flex: 1; overflow-y: auto; padding: 16px 20px 40px;">
+            <div style="flex: 1; overflow-y: auto; padding: 16px 20px 40px; display: flex; flex-direction: column;">
                 ${[
             'How do I setup my account ?',
             'Do I need to complete onboarding ?',
@@ -491,7 +491,7 @@ const views = {
                         We're still working on this answer. Please contact us at the number below for more information.
                     </div>
                 </div>`).join('')}
-                <div style="background:#E8F3EA;border-radius:14px;padding:20px;margin-top:8px;text-align:center;">
+                <div style="background:#E8F3EA;border-radius:14px;padding:20px;margin-top:auto;text-align:center;">
                     <p style="font-size:14px;font-weight:600;color:var(--text-main);margin-bottom:6px;">Didn't find the answer you are looking for ?</p>
                     <p style="font-size:13px;color:var(--text-muted);">Contact us at <strong style="color:var(--primary);">XXXX8912</strong></p>
                 </div>
@@ -502,13 +502,13 @@ const views = {
     knowledge_hub: () => `
         <div class="onboarding-screen" style="background: #F5F5F5; display: flex; flex-direction: column;">
             <div style="background: var(--primary); padding: 50px 20px 24px; color: var(--accent); position: relative; min-height: 355px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
-                <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()"></i>
-                <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 6px;">Knowledge Hub</h1>
-                <p style="font-size: 13px; opacity: 0.85; margin-bottom: 16px;">Everything you need to start, scale or invest confidently</p>
-                <div style="background:rgba(255,255,255,0.15);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;">
-                    <i class="ph ph-magnifying-glass" style="font-size:18px;opacity:0.8;"></i>
-                    <input type="text" placeholder="Search guides, articles" style="background:transparent;border:none;outline:none;color:white;font-size:14px;flex:1;font-family:'Outfit',sans-serif;">
+                <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="z-index: 10;"></i>
+                <h1 style="font-size: 36px; font-weight: 800; text-align: center; margin-bottom: 30px; letter-spacing: -0.5px; color: var(--accent);">Knowledge Hub</h1>
+                <div style="position: relative; margin-bottom: 20px;">
+                    <i class="ph ph-magnifying-glass" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 20px;"></i>
+                    <input type="text" placeholder="Search guides, articles" style="width: 100%; padding: 16px 16px 16px 48px; border-radius: 14px; border: none; font-size: 15px; outline: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15); font-family: 'Inter', sans-serif;">
                 </div>
+                <p style="font-size: 15px; opacity: 0.9; margin-bottom: 10px; color: var(--accent); font-weight: 400;">Everything you need to start, scale or invest confidently</p>
             </div>
             <div style="flex: 1; overflow-y: auto; padding: 20px; padding-bottom: 40px;">
                 <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;">Browse by Category</h2>
@@ -586,7 +586,7 @@ const views = {
             <div id="vendor-list-container" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; padding-bottom: 30px;">
                 ${(() => {
             const isRefurbishedView = (state.lastVendorTitle || title) === 'Refurbished Products';
-            
+
             const fitnessVendors = [
                 { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Fitness Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.3', reviews: '120', price: 'Starting from 30 Lakhs', feat: 'Commercial gyms, Turnkey setups' },
                 { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'FitTech Equipments', loc: 'Delhi NCR', rating: '4.1', reviews: '85', price: 'Starting from 15 Lakhs', feat: 'Cardio machines, Weights' },
@@ -594,15 +594,54 @@ const views = {
                 { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Elite Gym Setups', loc: 'Bengaluru, Karnataka', rating: '4.5', reviews: '160', price: 'Starting from 25 Lakhs', feat: 'Functional training, Yoga zones' },
                 { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'SportZone India', loc: 'Chennai, Tamil Nadu', rating: '4.2', reviews: '98', price: 'Starting from 18 Lakhs', feat: 'Multi-sport, School setups' },
             ];
-            const refurbishedVendors = [
-                { img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=600&auto=format&fit=crop', name: 'Cafe Delhi Heights', loc: 'Noida, Uttar Pradesh', rating: '4.3', reviews: '120', price: 'Starting from 7 thousands', feat: 'Mixer grinder' },
-                { img: 'https://images.unsplash.com/photo-1585515320310-259814833e62?q=80&w=600&auto=format&fit=crop', name: 'Kitchen Pro Supplies', loc: 'Delhi NCR', rating: '4.5', reviews: '95', price: 'Starting from 12 thousands', feat: 'Commercial ovens, Fryers' },
-                { img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop', name: 'RestoParts India', loc: 'Mumbai, Maharashtra', rating: '4.7', reviews: '180', price: 'Starting from 25 thousands', feat: 'Restaurant furniture, Decor' },
-                { img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop', name: 'Brew Station Co.', loc: 'Bengaluru, Karnataka', rating: '4.4', reviews: '67', price: 'Starting from 15 thousands', feat: 'Coffee machines, Grinders' },
-                { img: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop', name: 'Bakery Essentials', loc: 'Chennai, Tamil Nadu', rating: '4.6', reviews: '142', price: 'Starting from 20 thousands', feat: 'Baking ovens, Display units' },
+            const refurbishedFitness = [
+                { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Refurbished Treadmill XR', loc: 'Delhi NCR', rating: '4.6', reviews: '14', price: '₹25,000', feat: 'Cardio, Good Condition' },
+                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned Bench Press', loc: 'Noida, UP', rating: '4.8', reviews: '8', price: '₹12,000', feat: 'Strength, Premium' },
+                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Commercial Cross Trainer', loc: 'Mumbai', rating: '4.5', reviews: '22', price: '₹45,000', feat: 'Cardio, 1 Year Warranty' },
+                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Exercise Bike V2', loc: 'Bengaluru', rating: '4.2', reviews: '11', price: '₹18,000', feat: 'Cardio, Digital Display' }
+            ];
+            const franchiseVendors = [
+                { img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop', name: 'McDonald\'s Franchise', loc: 'Pan India', rating: '4.9', reviews: '1.2k', price: 'Starting from 1.5 Cr', feat: 'Global brand, Complete training' },
+                { img: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop', name: 'Subway Outlet Setup', loc: 'Delhi NCR', rating: '4.7', reviews: '850', price: 'Starting from 45 Lakhs', feat: 'Quick setup, High ROI' },
+                {
+                    img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop', name: 'Domino\'s Pizza Partner', loc: 'Mumbai, Maharashtra', rating: '4.8', reviews: '920', price: 'Starting from 80 Lakhs', feat: 'Delivery model, Brand backing'
+                },
+                { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop', name: 'KFC Franchise', loc: 'Bengaluru, Karnataka', rating: '4.9', reviews: '1.5k', price: 'Starting from 2 Cr', feat: 'Premium locations, Full support' },
+                { img: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop', name: 'Starbucks Partner', loc: 'Tier 1 Cities', rating: '4.9', reviews: '2.1k', price: 'Starting from 3 Cr', feat: 'Premium cafe, Global standards' }
+            ];
+            const outletVendors = [
+                { img: 'https://images.unsplash.com/photo-1567449303078-57ad995bd3fa?q=80&w=600&auto=format&fit=crop', name: 'JCPenney Store Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.6', reviews: '340', price: 'Starting from 50 Lakhs', feat: 'Retail fixtures, Visual merch' },
+                { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop', name: 'ZARA Retail Setup', loc: 'Delhi NCR', rating: '4.8', reviews: '560', price: 'Starting from 1.2 Cr', feat: 'Premium clothing store' },
+                { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'H&M Franchise Store', loc: 'Mumbai, Maharashtra', rating: '4.7', reviews: '420', price: 'Starting from 1 Cr', feat: 'Complete fashion retail' },
+                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Reliance Smart Point', loc: 'Pan India', rating: '4.5', reviews: '890', price: 'Starting from 30 Lakhs', feat: 'Grocery & Essentials' },
+                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Croma Tech Outlet', loc: 'Tier 1 & 2', rating: '4.8', reviews: '670', price: 'Starting from 80 Lakhs', feat: 'Electronics retail setup' }
             ];
 
-            const listToUse = (isRefurbishedView || state.showRefurbishedItems) ? refurbishedVendors : fitnessVendors;
+            const refurbishedFranchise = [
+                {
+                    img: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned McDonald\'s Kiosk', loc: 'Delhi NCR', rating: '4.6', reviews: '12', price: '₹12 Lakhs', feat: 'Fully equipped, Movable'
+                },
+                { img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop', name: 'Refurbished Subway Setup', loc: 'Pune, MH', rating: '4.7', reviews: '25', price: '₹8 Lakhs', feat: 'Kitchen setup, Counters' }
+            ];
+            const refurbishedOutlet = [
+                { img: 'https://images.unsplash.com/photo-1567449303078-57ad995bd3fa?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned JCPenney Racks', loc: 'Noida, UP', rating: '4.5', reviews: '40', price: '₹45,000', feat: 'Wood & Glass, LED lit' },
+                { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop', name: 'Refurbished ZARA Mannequins', loc: 'Gurugram', rating: '4.6', reviews: '18', price: '₹22,000', feat: 'Premium finish, Set of 10' }
+            ];
+
+            const currentTitle = state.lastVendorTitle || title;
+
+            let primaryVendors = fitnessVendors;
+            let refurbishedVendors = refurbishedFitness;
+
+            if (currentTitle === 'Franchise Vendors' || state.howToStart === 'franchise') {
+                primaryVendors = franchiseVendors;
+                refurbishedVendors = refurbishedFranchise;
+            } else if (currentTitle === 'Outlet Vendors' || state.howToStart === 'existing' || state.howToStart === 'outlet') {
+                primaryVendors = outletVendors;
+                refurbishedVendors = refurbishedOutlet;
+            }
+
+            const listToUse = (isRefurbishedView || state.showRefurbishedItems) ? refurbishedVendors : primaryVendors;
 
             return listToUse.map(v => `
                 <div style="background: white; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
@@ -634,7 +673,7 @@ const views = {
                         </div>
                     </div>
                 </div>`).join('');
-            })()}
+        })()}
             </div>
 
             <!-- Bottom Sheet Overlay & Container -->
@@ -653,7 +692,7 @@ const views = {
             <div style="position: relative; height: 300px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;">
                 <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.7) 100%);"></div>
                 <div style="position: absolute; top: 85px; right: 20px; display: flex; gap: 20px; color: white; z-index: 10;">
-                    <i class="ph ph-chat-circle-dots" style="font-size: 24px; cursor: pointer;" onclick="navigateTo('enquiry')"></i>
+                    <!-- <i class="ph ph-chat-circle-dots" style="font-size: 24px; cursor: pointer;" onclick="navigateTo('enquiry')"></i> -->
                     <i class="ph ph-bookmark-simple" onclick="navigateTo('saved')" style="font-size: 24px; cursor: pointer;"></i>
                     <i class="ph ph-share-network" style="font-size: 24px;"></i>
                 </div>
@@ -692,7 +731,7 @@ const views = {
                 </div>
 
                 <!-- Pricing card -->
-                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 16px; padding: 20px; margin-bottom: 24px;">
+                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 16px; padding: 20px; margin-bottom: 24px; position: relative;">
                     <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 16px;">Starting from ₹35L</h4>
                     <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">For complete commercial gym setup (2000 sq ft)<br>EMI Available &nbsp;·&nbsp; Financing options supported</p>
                     <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 14px;">Facilities</h4>
@@ -703,17 +742,14 @@ const views = {
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Branding support</div>
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Training zones</div>
                     </div>
-                    <!-- Contact icons -->
-                    <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #BBF7D0;">
-                        <div class="action-btn" onclick="this.classList.toggle('selected')">
-                            <i class="ph ph-phone"></i>
+                    
+                    <!-- Contact icons as floating pill over the border -->
+                    <div style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10;">
+                        <i class="ph ph-phone" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
+                        <div style="width: 44px; height: 32px; background: #E8F3EA; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="navigateTo('enquiry')">
+                            <i class="ph ph-envelope" style="font-size: 20px; color: var(--primary);"></i>
                         </div>
-                        <div class="action-btn" onclick="this.classList.toggle('selected'); if(this.classList.contains('selected')) navigateTo('enquiry');">
-                            <i class="ph ph-envelope"></i>
-                        </div>
-                        <div class="action-btn" onclick="this.classList.toggle('selected')">
-                            <i class="ph ph-paper-plane-tilt"></i>
-                        </div>
+                        <i class="ph ph-paper-plane-tilt" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
                     </div>
                 </div>
             </div>
@@ -1058,10 +1094,15 @@ const views = {
 
                 <div id="otp-error" style="display:none; background:#FEE2E2; color:#DC2626; padding:12px 16px; border-radius:12px; font-size:13px; margin-bottom:16px; text-align:center;"></div>
 
-                <p style="text-align: center; font-size: 14px; margin-bottom: auto; color: var(--text-muted);">
+                <div style="text-align: center; font-size: 14px; margin-bottom: auto; color: var(--text-muted);">
                     Didn't get the OTP?
                     <span onclick="resendOtp()" style="color: var(--primary); font-weight: 600; cursor: pointer;"> Resend</span>
-                </p>
+                </div>
+                
+                <!-- Dev hint -->
+                <div id="otp-hint" style="margin-bottom: 24px; text-align: center; background: #F0FDF4; border-radius: 12px; padding: 12px; font-size: 13px; color: var(--primary); opacity: 0; animation: fadeUp 0.4s ease forwards 0.2s;">
+                    Your OTP: <strong id="otp-display">${state.pendingOtp || '----'}</strong>
+                </div>
 
                 <div style="background: #F3F4F6; margin: 0 -20px -20px; padding: 30px 20px 40px; border-radius: 24px 24px 0 0;">
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 10px;">
@@ -1070,11 +1111,6 @@ const views = {
                         <div class="keypad-btn" onclick="typeOtp(0)">0</div>
                         <div class="keypad-btn" onclick="verifyOtp()"><i class="ph ph-check-circle" style="color: var(--primary); font-size: 32px;"></i></div>
                     </div>
-                </div>
-
-                <!-- Dev hint -->
-                <div id="otp-hint" style="margin-top: 20px; text-align: center; background: #F0FDF4; border-radius: 12px; padding: 12px; font-size: 13px; color: var(--primary);">
-                    Your OTP: <strong id="otp-display">${state.pendingOtp || '----'}</strong>
                 </div>
             </div>
         </div>
@@ -1134,7 +1170,7 @@ const views = {
     },
     saved: () => {
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; overflow-y: auto; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; padding-bottom: 90px; display: flex; flex-direction: column;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 50px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Saved</h1>
@@ -1453,7 +1489,7 @@ function updateCarousel() {
 
 function getGlobalNavbarHTML(view) {
     if (!getLoggedInUser()) return '';
-    const noNavViews = ['splash', 'welcome', 'login', 'signup', 'choosing_setup', 'business_type', 'location', 'how_to_start', 'build_brand_help', 'chat_detail', 'enquiry', 'otp_verify', 'role_selection'];
+    const noNavViews = ['splash', 'welcome', 'login', 'signup', 'choosing_setup', 'business_type', 'location', 'how_to_start', 'build_brand_help', 'chat_detail', 'enquiry', 'otp_verify', 'role_selection', 'faq', 'knowledge_hub'];
     if (noNavViews.includes(view)) return '';
 
     let activeTab = 'home';
@@ -1463,7 +1499,7 @@ function getGlobalNavbarHTML(view) {
     else if (view !== 'dashboard') activeTab = '';
 
     return `
-    <div id="main-navbar" style="position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto; background: white; display: flex; justify-content: space-around; align-items: center; padding: 10px 16px 20px; box-shadow: 0 -2px 20px rgba(0,0,0,0.06); z-index: 100; border-radius: 28px 28px 0 0; transition: transform 0.3s ease;">
+    <div id="main-navbar" style="position: fixed; bottom: 16px; left: 12px; right: 12px; margin: 0 auto; max-width: 448px; background: white; display: flex; justify-content: space-around; align-items: center; padding: 12px 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.15); z-index: 100; border-radius: 20px; transition: transform 0.3s ease;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer;" onclick="navigateTo('dashboard')">
             ${activeTab === 'home' ? `
             <div style="background: #E8F3EA; width: 52px; height: 40px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
@@ -1722,33 +1758,33 @@ function showVendorListing(title) {
 
 function toggleRefurbishedItems() {
     state.showRefurbishedItems = !state.showRefurbishedItems;
-    
+
     const listContainer = document.getElementById('vendor-list-container');
     const pillsContainer = document.getElementById('vendor-pills-container');
-    
+
     if (listContainer && pillsContainer) {
         // Smooth transition for the list content
-        gsap.to(listContainer, { 
-            opacity: 0, 
-            y: 10, 
-            duration: 0.15, 
+        gsap.to(listContainer, {
+            opacity: 0,
+            y: 10,
+            duration: 0.15,
             onComplete: () => {
                 // Create a temporary element to parse the new view HTML
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = views['vendor_listing'](state.lastVendorTitle);
-                
+
                 // Extract only the parts we need to update
                 const newListHTML = tempDiv.querySelector('#vendor-list-container').innerHTML;
                 const newPillsHTML = tempDiv.querySelector('#vendor-pills-container').innerHTML;
-                
+
                 // Update the DOM
                 listContainer.innerHTML = newListHTML;
                 pillsContainer.innerHTML = newPillsHTML;
-                
+
                 // Reset scroll position and animate back in
                 listContainer.scrollTop = 0;
-                gsap.fromTo(listContainer, 
-                    { opacity: 0, y: -10 }, 
+                gsap.fromTo(listContainer,
+                    { opacity: 0, y: -10 },
                     { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }
                 );
             }
@@ -1782,7 +1818,7 @@ function sendChatMessage() {
         const msgEl = document.createElement('div');
         msgEl.style.cssText = 'display:flex;flex-direction:column;align-items:flex-end;';
         msgEl.innerHTML = `
-            <div style="max-width:78%;padding:11px 15px;border-radius:18px 18px 4px 18px;background:var(--primary);color:white;font-size:14px;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,0.06);">${text}</div>
+            <div style="max-width:78%;padding:11px 15px;border-radius:18px 4px 18px 18px;background:#E8F3EA;color:var(--text-main);font-size:14px;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,0.06);">${text}</div>
             <span style="font-size:10px;color:#9CA3AF;margin-top:4px;padding:0 4px;">${time}</span>`;
         container.appendChild(msgEl);
         container.scrollTop = container.scrollHeight;
@@ -1930,17 +1966,34 @@ function openFilterSheet(filterType) {
         `;
     } else if (filterType === 'Rating') {
         sheetBody.innerHTML = `
-            <div style="display: flex; flex-direction: column; gap: 4px; padding: 4px 0;">
-                ${[5, 4, 3, 2].map(n => `
-                <div onclick="this.classList.toggle('rating-selected'); this.style.background = this.classList.contains('rating-selected') ? '#F0FDF4' : 'transparent';" style="display: flex; align-items: center; justify-content: space-between; padding: 14px 4px; border-bottom: 1px solid #F3F4F6; cursor: pointer; border-radius: 8px; transition: background 0.2s;">
-                    <span style="font-size: 14px; font-weight: 500; color: var(--text-muted);">${n} Star${n > 1 ? 's' : ''}</span>
-                    <div style="display: flex; gap: 3px;">
-                        ${Array.from({ length: 5 }, (_, i) => `<i class="${i < n ? 'ph-fill ph-star' : 'ph ph-star'}" style="font-size: 22px; color: ${i < n ? '#10B981' : '#D1D5DB'};"></i>`).join('')}
-                    </div>
-                </div>`).join('')}
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;">
+                <h3 style="font-size: 16px; font-weight: 600; color: var(--text-main);">Minimum Rating</h3>
+                <div id="dynamic-rating-container" style="display: flex; gap: 8px;">
+                    ${[1, 2, 3, 4, 5].map(n => `
+                    <i class="ph ph-star" id="rate-star-${n}" onclick="setRating(${n})" style="font-size: 36px; color: #D1D5DB; cursor: pointer; transition: color 0.2s, transform 0.1s;"></i>
+                    `).join('')}
+                </div>
+                <div id="rating-text" style="font-size: 14px; color: var(--text-muted); height: 20px;">Select a rating</div>
             </div>
             <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="closeFilterSheet()">Apply</button>
         `;
+        window.setRating = function (rating) {
+            for (let i = 1; i <= 5; i++) {
+                const star = document.getElementById('rate-star-' + i);
+                if (i <= rating) {
+                    star.className = 'ph-fill ph-star';
+                    star.style.color = '#10B981';
+                    star.style.transform = 'scale(1.1)';
+                    setTimeout(() => star.style.transform = 'scale(1)', 150);
+                } else {
+                    star.className = 'ph ph-star';
+                    star.style.color = '#D1D5DB';
+                    star.style.transform = 'scale(1)';
+                }
+            }
+            const texts = ["Poor", "Fair", "Good", "Very Good", "Excellent"];
+            document.getElementById('rating-text').innerText = rating + " Star" + (rating > 1 ? "s" : "") + " - " + texts[rating - 1];
+        };
     } else {
         sheetBody.innerHTML = `
             <div style="display: flex; flex-direction: column; gap: 12px; max-height: 50vh; overflow-y: auto; padding: 4px;">
@@ -1991,14 +2044,14 @@ function closeFilterSheet() {
 }
 
 self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open("app-cache").then(cache => {
-      return cache.addAll([
-        "/",
-        "/index.html",
-        "/style.css",
-        "/script.js"
-      ]);
-    })
-  );
+    event.waitUntil(
+        caches.open("app-cache").then(cache => {
+            return cache.addAll([
+                "/",
+                "/index.html",
+                "/style.css",
+                "/script.js"
+            ]);
+        })
+    );
 });
