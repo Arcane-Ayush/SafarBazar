@@ -731,7 +731,7 @@ const views = {
                 </div>
 
                 <!-- Pricing card -->
-                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 16px; padding: 20px; margin-bottom: 24px; position: relative;">
+                <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 16px; padding: 20px; margin-bottom: 40px; position: relative;">
                     <h4 style="font-weight: 700; margin-bottom: 4px; font-size: 16px;">Starting from ₹35L</h4>
                     <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">For complete commercial gym setup (2000 sq ft)<br>EMI Available &nbsp;·&nbsp; Financing options supported</p>
                     <h4 style="font-weight: 700; margin-bottom: 12px; font-size: 14px;">Facilities</h4>
@@ -741,6 +741,15 @@ const views = {
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Layout Planning</div>
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Branding support</div>
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Training zones</div>
+                    </div>
+                    
+                    <!-- Contact icons as floating pill over the border -->
+                    <div style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10; white-space: nowrap;">
+                        <i class="ph ph-phone" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
+                        <div style="width: 44px; height: 32px; background: #E8F3EA; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="navigateTo('enquiry')">
+                            <i class="ph ph-envelope" style="font-size: 20px; color: var(--primary);"></i>
+                        </div>
+                        <i class="ph ph-paper-plane-tilt" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
                     </div>
                 </div>
             </div>
@@ -771,15 +780,6 @@ const views = {
                         <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">${r.text}</p>
                     </div>`).join('')}
                 </div>
-            </div>
-
-            <!-- Fixed Contact Icons -->
-            <div style="position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); background: white; padding: 12px 28px; border-radius: 40px; display: flex; gap: 36px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); align-items: center; z-index: 100; border: 1px solid #F3F4F6;">
-                <i class="ph ph-phone" style="font-size: 24px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
-                <div style="width: 48px; height: 36px; background: #E8F3EA; border-radius: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;" onclick="navigateTo('enquiry')">
-                    <i class="ph ph-envelope" style="font-size: 22px; color: var(--primary);"></i>
-                </div>
-                <i class="ph ph-paper-plane-tilt" style="font-size: 24px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
             </div>
 
         </div>
