@@ -744,7 +744,7 @@ const views = {
                     </div>
                     
                     <!-- Contact icons as floating pill over the border -->
-                    <div style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10; white-space: nowrap;">
+                    <div id="vendor-contact-pill" style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10; white-space: nowrap; transition: box-shadow 0.2s;">
                         <i class="ph ph-phone" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
                         <div style="width: 44px; height: 32px; background: #E8F3EA; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="navigateTo('enquiry')">
                             <i class="ph ph-envelope" style="font-size: 20px; color: var(--primary);"></i>
@@ -1412,6 +1412,37 @@ function handleVendorScroll() {
 
     const container = document.getElementById('vendor-detail-scroll');
     if (!container) return;
+    
+    // Auto-adjusting sticky contact pill logic
+    const pill = document.getElementById('vendor-contact-pill');
+    if (pill) {
+        if (!pill.dataset.initialBottom) {
+            const rect = pill.getBoundingClientRect();
+            // Calculate what rect.bottom would be if scrollTop was 0
+            const initialRectBottom = rect.bottom + container.scrollTop;
+            pill.dataset.initialBottom = (window.innerHeight - initialRectBottom) + "px";
+        }
+        
+        if (container.scrollTop > 5) {
+            if (pill.style.position !== 'fixed') {
+                pill.style.position = 'fixed';
+                pill.style.bottom = pill.dataset.initialBottom;
+                pill.style.transform = 'translateX(-50%)';
+                pill.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)';
+                pill.style.zIndex = '100';
+            }
+        } else {
+            if (pill.style.position === 'fixed') {
+                pill.style.position = 'absolute';
+                pill.style.bottom = '0';
+                pill.style.transform = 'translate(-50%, 50%)';
+                pill.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)';
+                pill.style.zIndex = '10';
+            }
+        }
+    }
+
+
     const about = document.getElementById('about-section');
     const photos = document.getElementById('photos-section');
     const reviews = document.getElementById('reviews-section');
