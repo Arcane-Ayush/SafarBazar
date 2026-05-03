@@ -742,44 +742,44 @@ const views = {
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Branding support</div>
                         <div style="display: flex; align-items: center; gap: 8px;"><div style="width: 5px; height: 5px; background: var(--primary); border-radius: 50%;"></div> Training zones</div>
                     </div>
-                    
-                    <!-- Contact icons as floating pill over the border -->
-                    <div style="position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); background: white; padding: 10px 24px; border-radius: 40px; display: flex; gap: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); align-items: center; z-index: 10;">
-                        <i class="ph ph-phone" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
-                        <div style="width: 44px; height: 32px; background: #E8F3EA; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="navigateTo('enquiry')">
-                            <i class="ph ph-envelope" style="font-size: 20px; color: var(--primary);"></i>
-                        </div>
-                        <i class="ph ph-paper-plane-tilt" style="font-size: 22px; color: var(--text-main); cursor: pointer;" onclick="this.style.color='var(--primary)'"></i>
-                    </div>
                 </div>
             </div>
 
             <!-- Photos Section -->
             <div id="photos-section" style="padding: 0 0 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; padding: 0 20px;">View Photos</h3>
-                <div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 20px 4px;" class="hide-scrollbar">
-                    <div style="width: 260px; height: 180px; border-radius: 16px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;"></div>
-                    <div style="width: 260px; height: 180px; border-radius: 16px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;"></div>
-                    <div style="width: 260px; height: 180px; border-radius: 16px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;"></div>
-                    <div style="width: 260px; height: 180px; border-radius: 16px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;"></div>
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">View Photos</h3>
+                <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
+                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 280px; height: 200px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
                 </div>
             </div>
 
             <!-- Reviews Section -->
-            <div id="reviews-section" style="padding: 0 0 40px;">
-                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 14px; padding: 0 20px;">Reviews</h3>
-                <div style="display: flex; gap: 12px; overflow-x: auto; padding: 0 20px 4px;" class="hide-scrollbar">
+            <div id="reviews-section" style="padding: 0 0 100px;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">Reviews</h3>
+                <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
                     ${[
             { name: 'Anup Pandey', text: 'Keep your messages short, but make sure they cover everything you need to say.' },
             { name: 'Radhika Kr.', text: 'Keep your messages short, but make sure they cover everything you need to say.' },
             { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely.' },
             { name: 'Divya R.', text: 'Highly recommended for anyone starting their fitness business journey.' },
         ].map(r => `
-                    <div style="background: white; border-radius: 16px; padding: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); width: 200px; flex-shrink: 0;">
-                        <div style="font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--text-main);">${r.name}</div>
-                        <div style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">${r.text}</div>
+                    <div style="width: 260px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6;">
+                        <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 15px;">${r.name}</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5;">${r.text}</p>
                     </div>`).join('')}
                 </div>
+            </div>
+
+            <!-- Fixed Contact Icons -->
+            <div style="position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); background: white; padding: 12px 28px; border-radius: 40px; display: flex; gap: 36px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); align-items: center; z-index: 100; border: 1px solid #F3F4F6;">
+                <i class="ph ph-phone" style="font-size: 24px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
+                <div style="width: 48px; height: 36px; background: #E8F3EA; border-radius: 18px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s;" onclick="navigateTo('enquiry')">
+                    <i class="ph ph-envelope" style="font-size: 22px; color: var(--primary);"></i>
+                </div>
+                <i class="ph ph-paper-plane-tilt" style="font-size: 24px; color: var(--text-main); cursor: pointer; transition: color 0.2s;" onclick="this.style.color='var(--primary)'"></i>
             </div>
 
         </div>
@@ -1170,17 +1170,19 @@ const views = {
     },
     saved: () => {
         return `
-        <div class="onboarding-screen" style="background: white; padding-bottom: 90px; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 50px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Saved</h1>
             </div>
-            <div style="padding: 24px 20px;">
+            <div style="flex: 1; padding: 24px 20px; overflow-y: auto; padding-bottom: 100px;">
                 <div style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 20px;">You have total 4 saved items</div>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${[
                 { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
-                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' }
+                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
+                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Treadmill', matched: '2 vendors matched', date: 'Posted on 1st March, 2026' },
+                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Crossfit Setup', matched: '5 vendors matched', date: 'Posted on 5th March, 2026' }
             ].map(v => `
                     <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid #F3F4F6;">
                         <div style="height: 140px; background: url('${v.img}') center/cover;"></div>
