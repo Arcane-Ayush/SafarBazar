@@ -101,7 +101,7 @@ const views = {
     signup: () => `
         <div class="onboarding-screen" style="background: white; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
-            <div style="padding: 85px 20px 20px; text-align: center;">
+            <div style="padding: 72px 20px 34px; text-align: center;">
                 <h1 style="font-size: 32px; font-weight: 700;">Sign Up</h1>
             </div>
             <div style="padding: 12px 20px 30px; flex: 1; display: flex; flex-direction: column;">
@@ -549,7 +549,7 @@ const views = {
     vendor_listing: (title) => `
         <div class="onboarding-screen" style="background: #F3F4F6; position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column;">
             <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="z-index: 20;"></i>
-            <div style="background: var(--primary); padding: 85px 20px 24px; color: var(--accent); min-height: 355px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
+            <div style="background: var(--primary); padding: 80px 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                     <div style="display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; opacity: 0.9;">
                         <i class="ph ph-map-pin" style="font-size: 14px;"></i> Noida, Uttar Pradesh
@@ -557,11 +557,12 @@ const views = {
                     <div style="background: #DFE2F9; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; color: #131927;" onclick="navigateTo('business_type')">Change Business Type</div>
                 </div>
 
-                <h1 style="font-size: 32px; font-weight: 800; margin: 12px 0 20px; letter-spacing: -0.5px; text-align: center;">${state.lastVendorTitle || title}</h1>
+                <h1 style="font-size: 32px; font-weight: 800; margin: 12px 0 36px; letter-spacing: -0.5px; text-align: center;">${state.lastVendorTitle || title}</h1>
 
                 <div style="position: relative;">
-                    <i class="ph ph-magnifying-glass" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 18px;"></i>
-                    <input type="text" placeholder="Search within ${state.lastVendorTitle || title}" style="width: 100%; padding: 14px 16px 14px 46px; border-radius: 14px; border: none; font-size: 14px; outline: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15); font-family: 'Inter', sans-serif;">
+                    <i class="ph ph-magnifying-glass" style="position: absolute; left: 16px; top: 49%; transform: translateY(-50%); color: var(--text-muted); font-size: 18px;"></i>
+                    <!-- removed border none -->
+                    <input class="input-field" type="text" placeholder="Search within ${state.lastVendorTitle || title}" style="width: 100%; padding: 16px 16px 16px 46px; border-radius: 14px; font-size: 14px; outline: none; box-shadow: 0 4px 16px rgba(0,0,0,0.15); font-family: 'Inter', sans-serif;">
                 </div>
             </div>
             
@@ -607,7 +608,7 @@ const views = {
                 { img: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop', name: 'Starbucks Partner', loc: 'Tier 1 Cities', rating: '4.9', reviews: '2.1k', price: 'Starting from 3 Cr', feat: 'Premium cafe, Global standards' }
             ];
             const outletVendors = [
-                { img: 'https://images.unsplash.com/photo-1567449303078-57ad995bd3fa?q=80&w=600&auto=format&fit=crop', name: 'JCPenney Store Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.6', reviews: '340', price: 'Starting from 50 Lakhs', feat: 'Retail fixtures, Visual merch' },
+                { img: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/JC_Penney_store%2C_Aventura_Mall_%28Aventura%2C_Florida%2C_2006%29.jpg', name: 'JCPenney Store Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.6', reviews: '340', price: 'Starting from 50 Lakhs', feat: 'Retail fixtures, Visual merch' },
                 { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop', name: 'ZARA Retail Setup', loc: 'Delhi NCR', rating: '4.8', reviews: '560', price: 'Starting from 1.2 Cr', feat: 'Premium clothing store' },
                 { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'H&M Franchise Store', loc: 'Mumbai, Maharashtra', rating: '4.7', reviews: '420', price: 'Starting from 1 Cr', feat: 'Complete fashion retail' },
                 { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Reliance Smart Point', loc: 'Pan India', rating: '4.5', reviews: '890', price: 'Starting from 30 Lakhs', feat: 'Grocery & Essentials' },
@@ -880,7 +881,7 @@ const views = {
     `,
     dashboard: () => `
         <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; padding-bottom: 100px;">
-            <div style="background: var(--primary); color: var(--accent); height: 404px; min-height: 404px; flex-shrink: 0; position: relative; box-sizing: border-box;">
+            <div style="background: var(--primary); color: var(--accent); height: 384px; min-height: 384px; flex-shrink: 0; position: relative; box-sizing: border-box;">
                 <div style="position: absolute; top: 85px; left: 20px; right: 20px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500;">
                         <i class="ph ph-map-pin" style="font-size: 16px;"></i> Noida, Uttar Pradesh
@@ -894,9 +895,9 @@ const views = {
                     </div>
                 </div>
                 
-                <h1 style="position: absolute; top: 150px; left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello Madhav!</h1>
+                <h1 style="position: absolute; top: 140px; left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello Subhi!</h1>
                 
-                <div style="position: absolute; top: 255px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <div style="position: absolute; top: 240px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
                     <span style="font-size: 14px; font-weight: 500; color: white;">Seller Mode</span>
                     <label style="position: relative; display: inline-block; width: 44px; height: 24px;" >
                         <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
@@ -905,7 +906,7 @@ const views = {
                     </label>
                 </div>
                 
-                <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; display: flex; gap: 8px; justify-content: space-between;">
+                <div style="position: absolute; bottom: 24px; left: 20px; right: 20px; display: flex; gap: 8px; justify-content: space-between;">
                     <div class="tab-pill selected" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('my_requirements_list')">My Requirements</div>
                     <div class="tab-pill" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('choosing_setup')">Browse Vendors</div>
                     <div class="tab-pill" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('how_to_start')">New Enquiry</div>
@@ -1036,7 +1037,7 @@ const views = {
     login: () => `
         <div class="onboarding-screen" style="background: white; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
-            <div style="padding: 85px 20px 20px; text-align: center;">
+            <div style="padding: 72px 20px 34px; text-align: center;">
                 <h1 style="font-size: 32px; font-weight: 700;">Login</h1>
             </div>
             <div style="padding: 12px 20px; flex: 1; display: flex; flex-direction: column;">

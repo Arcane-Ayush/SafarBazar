@@ -1,6 +1,6 @@
 {
   "name": "Safar Bazaar",
-  "short_name": "App",
+  "short_name": "Safar Bazaar",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
