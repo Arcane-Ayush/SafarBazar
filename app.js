@@ -118,6 +118,14 @@ const views = {
                 </div>
 
                 <div id="signup-fields" style="position: relative; z-index: 50;">
+                    <!-- Name field (always visible) -->
+                    <div class="input-group">
+                        <label class="input-label">Full Name</label>
+                        <div style="position: relative;">
+                            <i class="ph ph-user" style="position: absolute; left: 16px; top: 18px; color: var(--text-muted);"></i>
+                            <input id="signup-name" type="text" class="input-field" placeholder="Enter your full name" style="padding-left: 48px;">
+                        </div>
+                    </div>
                     <div id="signup-fields-international" style="${state.isInternational ? 'display: block;' : 'display: none;'}">
                         <div class="input-group" style="position: relative; z-index: 10;">
                             <label class="input-label">Country</label>
@@ -691,7 +699,7 @@ const views = {
                 <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 40%, rgba(0,0,0,0.7) 100%);"></div>
                 <div style="position: absolute; top: 85px; right: 20px; display: flex; gap: 20px; color: white; z-index: 10;">
                     <!-- <i class="ph ph-chat-circle-dots" style="font-size: 24px; cursor: pointer;" onclick="navigateTo('enquiry')"></i> -->
-                    <i class="ph ph-bookmark-simple" onclick="navigateTo('saved')" style="font-size: 24px; cursor: pointer;"></i>
+                    <i id="vendor-bookmark" class="ph ph-bookmark-simple" onclick="toggleBookmark(this)" style="font-size: 24px; cursor: pointer; transition: transform 0.3s ease;"></i>
                     <i class="ph ph-share-network" style="font-size: 24px;"></i>
                 </div>
                 <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; color: white;">
@@ -895,7 +903,7 @@ const views = {
                     </div>
                 </div>
                 
-                <h1 style="position: absolute; top: 140px; left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello Subhi!</h1>
+                <h1 style="position: absolute; top: 140px; left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello ${(getLoggedInUser()?.name || 'there').split(' ')[0]}!</h1>
                 
                 <div style="position: absolute; top: 240px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
                     <span style="font-size: 14px; font-weight: 500; color: white;">Seller Mode</span>
@@ -919,20 +927,29 @@ const views = {
                     <div style="font-size: 13px; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 4px; cursor: pointer;" onclick="navigateTo('my_requirements_list')">View All <i class="ph ph-caret-right"></i></div>
                 </div>
                 
-                <div style="margin-bottom: 24px;">
-                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
-                        <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Fitness Equipment</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">3 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 26th February, 2026</div>
-                            <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
-                        </div>
+                <div style="margin-bottom: 24px; overflow: hidden; position: relative;">
+                    <div id="dashboard-card-track" style="display: flex; transition: transform 0.4s ease; width: 300%;" ontouchstart="dashCardTouchStart(event)" ontouchend="dashCardTouchEnd(event)">
+                        ${[
+                            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
+                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Cardio Machines', matched: '5 vendors matched', date: 'Posted on 24th February, 2026' },
+                            { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Strength Training Setup', matched: '12 vendors matched', date: 'Posted on 15th February, 2026' },
+                        ].map(c => `
+                        <div style="width: 33.333%; padding: 0 2px; box-sizing: border-box; flex-shrink: 0;">
+                            <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                                <div style="height: 140px; background: url('${c.img}') center/cover;"></div>
+                                <div style="padding: 16px;">
+                                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">${c.name}</h3>
+                                    <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">${c.matched}</div>
+                                    <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">${c.date}</div>
+                                    <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
+                                </div>
+                            </div>
+                        </div>`).join('')}
                     </div>
                     <div style="display: flex; justify-content: center; gap: 6px; margin-top: 16px;">
-                        <div style="width: 6px; height: 6px; border-radius: 3px; background: var(--primary);"></div>
-                        <div style="width: 6px; height: 6px; border-radius: 3px; background: #E5E7EA;"></div>
-                        <div style="width: 6px; height: 6px; border-radius: 3px; background: #E5E7EA;"></div>
+                        <div id="dash-dot-0" style="width: 6px; height: 6px; border-radius: 3px; background: var(--primary); transition: background 0.3s;"></div>
+                        <div id="dash-dot-1" style="width: 6px; height: 6px; border-radius: 3px; background: #E5E7EA; transition: background 0.3s;"></div>
+                        <div id="dash-dot-2" style="width: 6px; height: 6px; border-radius: 3px; background: #E5E7EA; transition: background 0.3s;"></div>
                     </div>
                 </div>
                 
@@ -1042,11 +1059,32 @@ const views = {
             </div>
             <div style="padding: 12px 20px; flex: 1; display: flex; flex-direction: column;">
                 <div id="login-error" style="display:none; background:#FEE2E2; color:#DC2626; padding:12px 16px; border-radius:12px; font-size:13px; margin-bottom:16px;"></div>
-                <div class="input-group" style="margin-bottom: 20px;">
-                    <label class="input-label" style="font-size: 13px; font-weight: 600;">Mobile Number</label>
-                    <div style="position: relative;">
-                        <i class="ph ph-device-mobile" style="position: absolute; left: 16px; top: 18px; color: var(--text-muted); font-size: 18px;"></i>
-                        <input id="login-mobile" type="tel" class="input-field" placeholder="+91 Enter mobile number" style="padding: 16px 16px 16px 48px; border-radius: 12px;">
+                <div class="toggle-row" style="margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 12px; font-size: 14px;">
+                        <i class="ph ph-globe" style="color: var(--text-muted);"></i>
+                        <span>International Partner?</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="login-intl-toggle" onchange="toggleLoginIntl(this.checked)">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div id="login-fields-national">
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <label class="input-label" style="font-size: 13px; font-weight: 600;">Mobile Number</label>
+                        <div style="position: relative;">
+                            <i class="ph ph-device-mobile" style="position: absolute; left: 16px; top: 18px; color: var(--text-muted); font-size: 18px;"></i>
+                            <input id="login-mobile" type="tel" class="input-field" placeholder="+91 Enter mobile number" style="padding: 16px 16px 16px 48px; border-radius: 12px;">
+                        </div>
+                    </div>
+                </div>
+                <div id="login-fields-international" style="display: none;">
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <label class="input-label" style="font-size: 13px; font-weight: 600;">Email Address</label>
+                        <div style="position: relative;">
+                            <i class="ph ph-envelope" style="position: absolute; left: 16px; top: 18px; color: var(--text-muted); font-size: 18px;"></i>
+                            <input id="login-email" type="email" class="input-field" placeholder="Enter your email" style="padding: 16px 16px 16px 48px; border-radius: 12px;">
+                        </div>
                     </div>
                 </div>
                 <div class="input-group" style="margin-bottom: 12px;">
@@ -1236,20 +1274,38 @@ function setLoggedInUser(user) {
 }
 
 function handleLogin() {
+    const isIntl = document.getElementById('login-intl-toggle')?.checked;
     const mobile = (document.getElementById('login-mobile')?.value || '').trim();
+    const email = (document.getElementById('login-email')?.value || '').trim();
     const password = document.getElementById('login-password')?.value || '';
     const errEl = document.getElementById('login-error');
 
-    if (!mobile || !password) {
-        errEl.textContent = 'Please fill in all fields.'; errEl.style.display = 'block'; return;
+    if (isIntl && !email) {
+        errEl.textContent = 'Please enter your email.'; errEl.style.display = 'block'; return;
+    }
+    if (!isIntl && !mobile) {
+        errEl.textContent = 'Please enter your mobile number.'; errEl.style.display = 'block'; return;
+    }
+    if (!password) {
+        errEl.textContent = 'Please enter your password.'; errEl.style.display = 'block'; return;
     }
     const users = getUsers();
-    const user = users.find(u => u.mobile === mobile && u.password === password);
+    let user;
+    if (isIntl) {
+        user = users.find(u => u.email === email && u.password === password);
+    } else {
+        user = users.find(u => u.mobile === mobile && u.password === password);
+    }
     if (!user) {
-        errEl.textContent = 'Invalid mobile number or password.'; errEl.style.display = 'block'; return;
+        errEl.textContent = isIntl ? 'Invalid email or password.' : 'Invalid mobile number or password.'; errEl.style.display = 'block'; return;
     }
     setLoggedInUser(user);
     navigateTo('dashboard');
+}
+
+function toggleLoginIntl(isIntl) {
+    document.getElementById('login-fields-national').style.display = isIntl ? 'none' : 'block';
+    document.getElementById('login-fields-international').style.display = isIntl ? 'block' : 'none';
 }
 
 function toggleInternational(isIntl) {
@@ -1260,6 +1316,7 @@ function toggleInternational(isIntl) {
 
 function handleSignup() {
     const isIntl = document.getElementById('intl-toggle')?.checked;
+    const name = (document.getElementById('signup-name')?.value || '').trim();
     const mobile = (document.getElementById('signup-mobile')?.value || '').trim();
     const country = document.getElementById('selected-country')?.innerText || '';
     const email = (document.getElementById('signup-email')?.value || '').trim();
@@ -1267,6 +1324,9 @@ function handleSignup() {
     const confirm = document.getElementById('signup-confirm')?.value || '';
     const errEl = document.getElementById('signup-error');
 
+    if (!name) {
+        errEl.textContent = 'Please enter your full name.'; errEl.style.display = 'block'; return;
+    }
     if (!isIntl && !mobile) {
         errEl.textContent = 'Please enter your mobile number.'; errEl.style.display = 'block'; return;
     }
@@ -1286,7 +1346,6 @@ function handleSignup() {
         errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return;
     }
 
-    const identifier = isIntl ? email : mobile;
     const users = getUsers();
     if (isIntl && users.find(u => u.email === email)) {
         errEl.textContent = 'An account with this email already exists.'; errEl.style.display = 'block'; return;
@@ -1299,7 +1358,7 @@ function handleSignup() {
     const otp = String(Math.floor(1000 + Math.random() * 9000));
     state.pendingOtp = otp;
     state.otpContact = isIntl ? email : ('+91-' + mobile.replace(/\D/g, '').slice(-10).replace(/(\d{6})(\d{4})/, 'XXXXXX$2'));
-    state.pendingUser = { id: Date.now(), name: '', mobile: isIntl ? '' : mobile, email: isIntl ? email : '', password, country: isIntl ? country : 'India', city: '', state: '', isIntl, createdAt: new Date().toISOString() };
+    state.pendingUser = { id: Date.now(), name, mobile: isIntl ? '' : mobile, email: isIntl ? email : '', password, country: isIntl ? country : 'India', city: '', state: '', isIntl, createdAt: new Date().toISOString() };
 
     console.log('OTP for dev:', otp); // visible in dev tools
     navigateTo('otp_verify');
@@ -1487,6 +1546,38 @@ function handleTouchEnd(e) {
         updateCarousel();
     }
     startWelcomeCarousel();
+}
+
+// ─── Dashboard Card Carousel ─────────────────────────────────────────────────
+let dashCardSlide = 0;
+let dashTouchStartX = 0;
+function dashCardTouchStart(e) { dashTouchStartX = e.changedTouches[0].screenX; }
+function dashCardTouchEnd(e) {
+    const diff = dashTouchStartX - e.changedTouches[0].screenX;
+    if (diff > 50) { dashCardSlide = Math.min(dashCardSlide + 1, 2); }
+    else if (diff < -50) { dashCardSlide = Math.max(dashCardSlide - 1, 0); }
+    updateDashCards();
+}
+function updateDashCards() {
+    const track = document.getElementById('dashboard-card-track');
+    if (track) track.style.transform = `translateX(-${dashCardSlide * 33.333}%)`;
+    for (let i = 0; i < 3; i++) {
+        const dot = document.getElementById('dash-dot-' + i);
+        if (dot) dot.style.background = i === dashCardSlide ? 'var(--primary)' : '#E5E7EA';
+    }
+}
+
+// ─── Bookmark Toggle ─────────────────────────────────────────────────────────
+function toggleBookmark(el) {
+    const isFilled = el.classList.contains('ph-fill');
+    if (isFilled) {
+        el.classList.remove('ph-fill');
+        el.classList.add('ph');
+    } else {
+        el.classList.remove('ph');
+        el.classList.add('ph-fill');
+        gsap.fromTo(el, { scale: 1.5 }, { scale: 1, duration: 0.4, ease: 'elastic.out(1, 0.4)' });
+    }
 }
 
 function startWelcomeCarousel() {
