@@ -467,7 +467,7 @@ const views = {
                 </div>
 
                 <div style="flex: 1;"></div>
-                <button class="btn btn-primary" onclick="showVendorListing('Fitness Vendors')">Continue</button>
+                <button class="btn btn-primary" onclick="showVendorListing(getDynamicVendorTitle())">Continue</button>
             </div>
         </div>
         `;
@@ -562,7 +562,7 @@ const views = {
                     <div style="display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; opacity: 0.9;">
                         <i class="ph ph-map-pin" style="font-size: 14px;"></i> Noida, Uttar Pradesh
                     </div>
-                    <div style="background: #DFE2F9; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; color: #131927;" onclick="navigateTo('business_type')">Change Business Type</div>
+                    <div style="background: #DFE2F9; padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; color: #131927;" onclick="state.isChangingBusiness = true; navigateTo('business_type')">Change Business Type</div>
                 </div>
 
                 <h1 style="font-size: 32px; font-weight: 800; margin: 12px 0 36px; letter-spacing: -0.5px; text-align: center;">${state.lastVendorTitle || title}</h1>
@@ -577,14 +577,15 @@ const views = {
             <div id="vendor-pills-container" style="padding: 16px 20px 4px; display: flex; gap: 10px; flex-shrink: 0;">
                 ${(() => {
             const all = [];
-            const show4 = ['Fitness Vendors', 'Vendors'].includes(title);
-            const show3 = ['Fitness Vendors', 'Vendors', 'Refurbished Products'].includes(title);
-            const showAll = ['Franchise Vendors', 'Outlet Vendors', 'Fitness Vendors', 'Vendors', 'Refurbished Products'].includes(title);
+            const isRefurb = title.includes('Refurbished');
+            const isFranchiseOrOutlet = title.includes('Franchise') || title.includes('Outlet');
             const pillStyle = (id, label) => `<div id="pill-${id}" onclick="openFilterSheet('${label}')" class="tab-pill" style="flex: 1; padding: 10px 4px; border-radius: 12px !important; font-weight: 500;">${label}</div>`;
-            if (showAll) all.push(pillStyle('location', 'Location'));
-            if (showAll) all.push(pillStyle('price', 'Price'));
-            if (show3) all.push(pillStyle('rating', 'Rating'));
-            if (show4) all.push(`<div id="pill-refurbished" onclick="toggleRefurbishedItems()" class="tab-pill ${state.showRefurbishedItems ? 'selected' : ''}" style="flex: 1; padding: 10px 4px; border-radius: 12px !important; font-weight: 500;">Refurbished</div>`);
+            all.push(pillStyle('location', 'Location'));
+            all.push(pillStyle('price', 'Price'));
+            all.push(pillStyle('rating', 'Rating'));
+            if (!isRefurb && !isFranchiseOrOutlet) {
+                all.push(`<div id="pill-refurbished" onclick="toggleRefurbishedItems()" class="tab-pill ${state.showRefurbishedItems ? 'selected' : ''}" style="flex: 1; padding: 10px 4px; border-radius: 12px !important; font-weight: 500;">Refurbished</div>`);
+            }
             return all.join('');
         })()}
             </div>
@@ -1799,10 +1800,32 @@ function setSetupType(el, type) {
     }, 400);
 }
 
+function getDynamicVendorTitle(prefix = '') {
+    const mapping = {
+        'sports': 'Sports',
+        'amusement': 'Amusement',
+        'fitness': 'Fitness',
+        'restaurant': 'Restaurant'
+    };
+    const business = mapping[state.businessType] || 'Business';
+    if (prefix) {
+        return `${prefix} ${business} Vendors`.trim();
+    }
+    return `${business} Vendors`.trim();
+}
+
 function setBusinessType(el, type) {
     state.businessType = type;
     el.classList.add('selected');
-    setTimeout(() => navigateTo('location'), 400);
+    setTimeout(() => {
+        if (state.isChangingBusiness) {
+            state.isChangingBusiness = false;
+            // Go directly back to vendor listing with updated dynamic title
+            showVendorListing(getDynamicVendorTitle());
+        } else {
+            navigateTo('location');
+        }
+    }, 400);
 }
 
 function proceedFromLocation() {
@@ -1811,7 +1834,7 @@ function proceedFromLocation() {
     } else if (state.setupType === 'existing') {
         navigateTo('build_brand_help');
     } else {
-        showVendorListing('Setup Vendors');
+        showVendorListing(getDynamicVendorTitle('Existing Setup'));
     }
 }
 
@@ -1822,9 +1845,9 @@ function setHowToStart(el, type) {
         if (type === 'build_brand') {
             navigateTo('build_brand_help');
         } else if (type === 'franchise') {
-            showVendorListing('Franchise Vendors');
+            showVendorListing(getDynamicVendorTitle('Franchise'));
         } else {
-            showVendorListing('Outlet Vendors');
+            showVendorListing(getDynamicVendorTitle('Outlet'));
         }
     }, 400);
 }
