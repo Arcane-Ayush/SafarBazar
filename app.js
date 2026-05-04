@@ -819,7 +819,7 @@ const views = {
             </div>
             
             <div style="padding: 20px;">
-                <button class="btn btn-primary" onclick="alert('Enquiry Sent!'); navigateTo('dashboard')">Get OTP</button>
+                <button class="btn btn-primary" onclick="alert('Enquiry Sent!'); navigateTo('dashboard')">Send Enquiry</button>
             </div>
         </div>
     `,
