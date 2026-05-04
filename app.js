@@ -766,7 +766,7 @@ const views = {
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">Reviews</h3>
                 <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
                     ${[
-            { name: 'Anup Pandey', text: 'Keep your messages short, but make sure they cover everything you need to say.' },
+            { name: 'Anup Pandey', text: 'Hello Subhi your messages short, but make sure they cover everything you need to say.' },
             { name: 'Radhika Kr.', text: 'Keep your messages short, but make sure they cover everything you need to say.' },
             { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely.' },
             { name: 'Divya R.', text: 'Highly recommended for anyone starting their fitness business journey.' },
@@ -906,10 +906,10 @@ const views = {
                     </label>
                 </div>
                 
-                <div style="position: absolute; bottom: 24px; left: 20px; right: 20px; display: flex; gap: 8px; justify-content: space-between;">
-                    <div class="tab-pill selected" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('my_requirements_list')">My Requirements</div>
-                    <div class="tab-pill" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('choosing_setup')">Browse Vendors</div>
-                    <div class="tab-pill" style="flex: 1; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('how_to_start')">New Enquiry</div>
+                <div style="position: absolute; bottom: 24px; left: 5px; right: 5px; display: flex; gap: 8px; justify-content: space-between;">
+                    <div class="tab-pill selected" style="flex: 1; min-width: 122px; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('my_requirements_list')">My Requirements</div>
+                    <div class="tab-pill" style="flex: 1; min-width: 122px; padding: 10px 4px; border-radius: 8px !important;" onclick="navigateTo('how_to_start')">Browse Vendors</div>
+                    <div class="tab-pill" style="flex: 1; padding: 10px 4px; min-width: 122px; border-radius: 8px !important;" onclick="navigateTo('choosing_setup')">New Enquiry</div>
                 </div>
             </div>
             

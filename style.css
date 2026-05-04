@@ -24,6 +24,7 @@
 
 body {
     background-color: #F3F4F6;
+    /* background-color: var(--primary); */
     color: var(--text-main);
     line-height: 1.5;
 }
