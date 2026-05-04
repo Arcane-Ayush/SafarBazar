@@ -697,7 +697,7 @@ const views = {
                 <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; color: white;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-end;">
                         <div>
-                            <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Cafe Delhi Heights</h1>
+                            <h1 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Fitness Bench Press</h1>
                             <div style="font-size: 12px; opacity: 0.9;">C 25, Ground Floor, Sector 15, Noida, UP</div>
                         </div>
                         <div style="background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); padding: 5px 10px; border-radius: 12px; font-size: 12px; display: flex; align-items: center; gap: 4px; margin-bottom: 4px;">
@@ -768,10 +768,10 @@ const views = {
                     ${[
             { name: 'Anup Pandey', text: 'Best pricing compared to other vendors we checked. Good value for money and decent quality. Recommended for budget setups.' },
             { name: 'Radhika Kr.', text: 'Very professional supplier. Shared reguilar updates and handled last-minute changes without issues. Highly reliable for bulk orders.' },
-            { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely.' },
+            { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely. Overall a very pleasant experience.' },
             { name: 'Divya R.', text: 'Quick service & very trustworthy. Highly recommended for anyone starting their fitness business journey.' },
         ].map(r => `
-                    <div style="width: 280px; min-height: 160px; background: white; padding: 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="width: 280px; min-height: 160px; background: white; padding: 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6; display: flex; flex-direction: column; justify-content: flex-start;">
                         <h4 style="font-weight: 700; margin-bottom: 10px; font-size: 16px;">${r.name}</h4>
                         <p style="font-size: 15px; color: var(--text-muted); line-height: 1.5;">${r.text}</p>
                     </div>`).join('')}
