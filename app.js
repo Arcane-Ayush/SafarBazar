@@ -65,7 +65,7 @@ const views = {
     `,
     welcome: () => `
         <div class="onboarding-screen">
-            <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary);">
+            <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary); padding-top: 50px;">
                 <div style="font-size: 32px; font-weight: 700; color: #10B981;">Safar Bazaar</div>
             </div>
             <div class="bottom-half" style="position: relative; overflow: hidden; padding: 0;">
@@ -549,7 +549,7 @@ const views = {
     vendor_listing: (title) => `
         <div class="onboarding-screen" style="background: #F3F4F6; position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column;">
             <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="z-index: 20;"></i>
-            <div style="background: var(--primary); padding: 80px 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
+            <div style="background: var(--primary); padding: 82px 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                     <div style="display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; opacity: 0.9;">
                         <i class="ph ph-map-pin" style="font-size: 14px;"></i> Noida, Uttar Pradesh
@@ -766,10 +766,10 @@ const views = {
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">Reviews</h3>
                 <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
                     ${[
-            { name: 'Anup Pandey', text: 'Hello Subhi your messages short, but make sure they cover everything you need to say.' },
-            { name: 'Radhika Kr.', text: 'Keep your messages short, but make sure they cover everything you need to say.' },
+            { name: 'Anup Pandey', text: 'Best pricing compared to other vendors we checked. Good value for money and decent quality. Recommended for budget setups.' },
+            { name: 'Radhika Kr.', text: 'Very professional supplier. Shared reguilar updates and handled last-minute changes without issues. Highly reliable for bulk orders.' },
             { name: 'Suresh M.', text: 'Amazing setup experience. The team was professional and timely.' },
-            { name: 'Divya R.', text: 'Highly recommended for anyone starting their fitness business journey.' },
+            { name: 'Divya R.', text: 'Quick service & very trustworthy. Highly recommended for anyone starting their fitness business journey.' },
         ].map(r => `
                     <div style="width: 280px; min-height: 160px; background: white; padding: 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex-shrink: 0; border: 1px solid #F3F4F6; display: flex; flex-direction: column; justify-content: center;">
                         <h4 style="font-weight: 700; margin-bottom: 10px; font-size: 16px;">${r.name}</h4>
@@ -1008,7 +1008,7 @@ const views = {
             </div>
 
             <!-- Messages -->
-            <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 8px;">
+            <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 12px;">
                 ${chat.messages.map(msg => {
             const isMe = msg.from === 'me';
             return `
@@ -1408,7 +1408,7 @@ function handleVendorScroll() {
 
     const container = document.getElementById('vendor-detail-scroll');
     if (!container) return;
-    
+
     // Auto-adjusting sticky contact pill logic
     const pill = document.getElementById('vendor-contact-pill');
     if (pill) {
@@ -1418,7 +1418,7 @@ function handleVendorScroll() {
             const initialRectBottom = rect.bottom + container.scrollTop;
             pill.dataset.initialBottom = (window.innerHeight - initialRectBottom) + "px";
         }
-        
+
         if (container.scrollTop > 5) {
             if (pill.style.position !== 'fixed') {
                 pill.style.position = 'fixed';
@@ -1720,7 +1720,7 @@ function proceedFromLocation() {
     } else if (state.setupType === 'existing') {
         navigateTo('build_brand_help');
     } else {
-        showVendorListing('Existing Setup Vendors');
+        showVendorListing('Setup Vendors');
     }
 }
 
@@ -1952,12 +1952,13 @@ function openFilterSheet(filterType) {
     if (filterType === 'Location') {
         sheetBody.innerHTML = `
             <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
-                <div class="tag-pill">Delhi-NCR</div>
-                <div class="tag-pill">Mumbai</div>
-                <div class="tag-pill">Kolkata</div>
-                <div class="tag-pill">Bengaluru</div>
-                <div class="tag-pill">Ahmedabad</div>
-                <div class="tag-pill">Hyderabad</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Delhi-NCR</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Mumbai</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Kolkata</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Goa</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Bengaluru</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Ahmedabad</div>
+                <div class="tag-pill" onclick="togglePill(event , this);">Hyderabad</div>
             </div>
             <div style="position: relative; margin-bottom: 24px;">
                 <i class="ph ph-magnifying-glass" style="position: absolute; left: 16px; top: 14px; color: var(--text-muted); font-size: 18px;"></i>
