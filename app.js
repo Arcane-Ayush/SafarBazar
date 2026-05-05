@@ -67,7 +67,7 @@ const views = {
     `,
     welcome: () => `
         <div class="onboarding-screen">
-            <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary); padding-top: 50px;">
+            <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary); padding-top: calc(50px + env(safe-area-inset-top));">
                 <div style="font-size: 32px; font-weight: 700; color: #10B981;">Safar Bazaar</div>
             </div>
             <div class="bottom-half" style="position: relative; overflow-x: hidden; padding: 0; min-height: 45dvh; display: flex; flex-direction: column;">
@@ -103,7 +103,7 @@ const views = {
     signup: () => `
         <div class="onboarding-screen" style="background: white; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
-            <div style="padding: 72px 20px 34px; text-align: center;">
+            <div style="padding: calc(72px + env(safe-area-inset-top)) 20px 34px; text-align: center;">
                 <h1 style="font-size: 32px; font-weight: 700;">Sign Up</h1>
             </div>
             <div style="padding: 12px 20px 30px; flex: 1; display: flex; flex-direction: column;">
@@ -211,7 +211,7 @@ const views = {
         const isSeller = state.role === 'seller';
         return `
         <div class="onboarding-screen" style="background: white; height: 100dvh; display: flex; flex-direction: column;">
-            <div style="background: var(--primary); color: var(--accent); padding: 60px 20px 40px; display: flex; flex-direction: column; min-height: 60dvh; overflow-y: auto;">
+            <div style="background: var(--primary); color: var(--accent); padding: calc(60px + env(safe-area-inset-top)) 20px 40px; display: flex; flex-direction: column; min-height: 60dvh; overflow-y: auto;">
                 <h1 style="font-size: 32px; margin-bottom: 8px; font-weight: 700;">Let's get started</h1>
                 <p style="font-size: 14px; opacity: 0.9; margin-bottom: 40px; line-height: 1.5;">Choose your role. You can switch anytime from your profile</p>
                 
@@ -559,7 +559,7 @@ const views = {
     vendor_listing: (title) => `
         <div class="onboarding-screen" style="background: #F3F4F6; position: relative; height: 100dvh; overflow: hidden; display: flex; flex-direction: column;">
             <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="z-index: 20;"></i>
-            <div style="background: var(--primary); padding: 82px 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
+            <div style="background: var(--primary); padding: calc(82px + env(safe-area-inset-top)) 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                     <div style="display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; opacity: 0.9;">
                         <i class="ph ph-map-pin" style="font-size: 14px;"></i> Noida, Uttar Pradesh
@@ -892,8 +892,8 @@ const views = {
     `,
     dashboard: () => `
         <div class="onboarding-screen" style="background: #F3F4F6; height: 100dvh; overflow-y: auto; padding-bottom: 100px; box-sizing: border-box;">
-            <div style="background: var(--primary); color: var(--accent); height: 384px; min-height: 384px; flex-shrink: 0; position: relative; box-sizing: border-box;">
-                <div style="position: absolute; top: 85px; left: 20px; right: 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="background: var(--primary); color: var(--accent); height: calc(384px + env(safe-area-inset-top)); min-height: calc(384px + env(safe-area-inset-top)); flex-shrink: 0; position: relative; box-sizing: border-box;">
+                <div style="position: absolute; top: calc(85px + env(safe-area-inset-top)); left: 20px; right: 20px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500;">
                         <i class="ph ph-map-pin" style="font-size: 16px;"></i> Noida, Uttar Pradesh
                     </div>
@@ -906,9 +906,9 @@ const views = {
                     </div>
                 </div>
                 
-                <h1 style="position: absolute; top: 140px; left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello ${(getLoggedInUser()?.name || 'there').split(' ')[0]}!</h1>
+                <h1 style="position: absolute; top: calc(140px + env(safe-area-inset-top)); left: 20px; font-size: 32px; font-weight: 700; margin: 0;">Hello ${(getLoggedInUser()?.name || 'there').split(' ')[0]}!</h1>
                 
-                <div style="position: absolute; top: 240px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
+                <div style="position: absolute; top: calc(240px + env(safe-area-inset-top)); left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 12px;">
                     <span style="font-size: 14px; font-weight: 500; color: white;">Seller Mode</span>
                     <label style="position: relative; display: inline-block; width: 44px; height: 24px;" >
                         <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
@@ -970,7 +970,7 @@ const views = {
         <div class="onboarding-screen" style="background: white; height: 100dvh; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
             <!-- Header -->
-            <div style="padding: 80px 20px 16px; background: white; text-align: center; border-bottom: 1px solid #F0F0F0;">
+            <div style="padding: calc(80px + env(safe-area-inset-top)) 20px 16px; background: white; text-align: center; border-bottom: 1px solid #F0F0F0;">
                 <h1 style="font-size: 22px; font-weight: 700; color: var(--text-main);">My Chats</h1>
             </div>
 
@@ -1011,7 +1011,7 @@ const views = {
         return `
         <div class="onboarding-screen" style="background: #F5F5F5; height: 100dvh; display: flex; flex-direction: column;">
             <!-- Chat Header -->
-            <div style="background: white; padding: 50px 20px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F0F0F0; flex-shrink: 0;">
+            <div style="background: white; padding: calc(50px + env(safe-area-inset-top)) 20px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F0F0F0; flex-shrink: 0;">
                 <i class="ph ph-caret-left" onclick="navigateTo('chat_list')" style="font-size: 22px; cursor: pointer; color: var(--text-main); flex-shrink: 0;"></i>
                 <div style="width: 38px; height: 38px; border-radius: 50%; background: #E5E7EA; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #6B7280;">
                     <i class="ph ph-user" style="font-size: 20px;"></i>
@@ -1057,7 +1057,7 @@ const views = {
     login: () => `
         <div class="onboarding-screen" style="background: white; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
-            <div style="padding: 72px 20px 34px; text-align: center;">
+            <div style="padding: calc(72px + env(safe-area-inset-top)) 20px 34px; text-align: center;">
                 <h1 style="font-size: 32px; font-weight: 700;">Login</h1>
             </div>
             <div style="padding: 12px 20px; flex: 1; display: flex; flex-direction: column;">
@@ -1160,8 +1160,8 @@ const views = {
         if (!user) { setTimeout(() => navigateTo('login'), 0); return '<div class="onboarding-screen"></div>'; }
         return `
         <div class="onboarding-screen" style="background: white; height: 100dvh; display: flex; flex-direction: column;">
-            <div style="display: flex; align-items: center; justify-content: center; padding: 50px 20px 20px; border-bottom: 1px solid #F3F4F6; position: relative;">
-                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="position: absolute; top: 50px; left: 20px; font-size: 24px; color: var(--text-main);"></i>
+            <div style="display: flex; align-items: center; justify-content: center; padding: calc(50px + env(safe-area-inset-top)) 20px 20px; border-bottom: 1px solid #F3F4F6; position: relative;">
+                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="position: absolute; top: calc(50px + env(safe-area-inset-top)); left: 20px; font-size: 24px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Profile</h1>
             </div>
             
@@ -1208,8 +1208,8 @@ const views = {
     saved: () => {
         return `
         <div class="onboarding-screen" style="background: white; height: 100dvh; display: flex; flex-direction: column;">
-            <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-top: 20px; margin-bottom: 30px;">
-                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 59px; left: 20px; color: var(--text-main);"></i>
+            <div style="background: white; padding: calc(50px + env(safe-area-inset-top)) 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-top: 20px; margin-bottom: 30px;">
+                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: calc(59px + env(safe-area-inset-top)); left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 26px; font-weight: 700;">Saved</h1>
             </div>
             <div style="flex: 1; padding: 24px 20px; overflow-y: auto; padding-bottom: 100px;">
@@ -1238,8 +1238,8 @@ const views = {
     notification: () => {
         return `
         <div class="onboarding-screen" style="background: white; height: 100dvh; overflow-y: auto; display: flex; flex-direction: column;">
-            <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
-                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 50px; left: 20px; color: var(--text-main);"></i>
+            <div style="background: white; padding: calc(50px + env(safe-area-inset-top)) 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
+                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: calc(50px + env(safe-area-inset-top)); left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Notification</h1>
             </div>
             <div style="padding: 24px 20px;">
