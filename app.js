@@ -59,8 +59,10 @@ const state = {
 const views = {
     splash: () => `
         <div class="onboarding-screen" style="background: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-            <div style="font-size: 48px; font-weight: 700; color: #10B981; margin-bottom: 8px; letter-spacing: -1px;">Safar Bazaar</div>
-            <!-- <div style="font-size: 16px; color: rgba(255,255,255,0.8); letter-spacing: 2px; text-transform: uppercase;">Business Partner</div> -->
+            <div id="splash-logo" style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; font-size: 48px; font-weight: 700; color: #10B981; margin-bottom: 8px; letter-spacing: -1px; transform-origin: center;">
+                <div>Safar</div>
+                <div>Bazaar</div>
+            </div>
         </div>
     `,
     welcome: () => `
@@ -793,7 +795,7 @@ const views = {
     enquiry: () => `
         <div class="onboarding-screen" style="background: white; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
-            <div style="padding: 85px 20px 20px; text-align: center;">
+            <div style="padding: 80px 20px 20px; text-align: center;">
                 <h1 style="font-size: 22px; font-weight: 700;">Enquiry</h1>
             </div>
             <div style="padding: 12px 20px; flex: 1; overflow-y: auto;">
@@ -889,7 +891,7 @@ const views = {
         </div>
     `,
     dashboard: () => `
-        <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; padding-bottom: 100px;">
+        <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; padding-bottom: 100px; box-sizing: border-box;">
             <div style="background: var(--primary); color: var(--accent); height: 384px; min-height: 384px; flex-shrink: 0; position: relative; box-sizing: border-box;">
                 <div style="position: absolute; top: 85px; left: 20px; right: 20px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500;">
@@ -931,10 +933,10 @@ const views = {
                 <div style="margin-bottom: 24px; overflow: hidden; position: relative;">
                     <div id="dashboard-card-track" style="display: flex; transition: transform 0.4s ease; width: 300%;" ontouchstart="dashCardTouchStart(event)" ontouchend="dashCardTouchEnd(event)">
                         ${[
-                            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
-                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Cardio Machines', matched: '5 vendors matched', date: 'Posted on 24th February, 2026' },
-                            { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Strength Training Setup', matched: '12 vendors matched', date: 'Posted on 15th February, 2026' },
-                        ].map(c => `
+            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
+            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Cardio Machines', matched: '5 vendors matched', date: 'Posted on 24th February, 2026' },
+            { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Strength Training Setup', matched: '12 vendors matched', date: 'Posted on 15th February, 2026' },
+        ].map(c => `
                         <div style="width: 33.333%; padding: 0 2px; box-sizing: border-box; flex-shrink: 0;">
                             <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
                                 <div style="height: 140px; background: url('${c.img}') center/cover;"></div>
@@ -968,7 +970,7 @@ const views = {
         <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
             <!-- Header -->
-            <div style="padding: 85px 20px 16px; background: white; text-align: center; border-bottom: 1px solid #F0F0F0;">
+            <div style="padding: 80px 20px 16px; background: white; text-align: center; border-bottom: 1px solid #F0F0F0;">
                 <h1 style="font-size: 22px; font-weight: 700; color: var(--text-main);">My Chats</h1>
             </div>
 
@@ -1206,9 +1208,9 @@ const views = {
     saved: () => {
         return `
         <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column;">
-            <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
-                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 50px; left: 20px; color: var(--text-main);"></i>
-                <h1 style="font-size: 20px; font-weight: 700;">Saved</h1>
+            <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-top: 20px; margin-bottom: 30px;">
+                <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 59px; left: 20px; color: var(--text-main);"></i>
+                <h1 style="font-size: 26px; font-weight: 700;">Saved</h1>
             </div>
             <div style="flex: 1; padding: 24px 20px; overflow-y: auto; padding-bottom: 100px;">
                 <div style="font-size: 15px; font-weight: 600; color: var(--text-main); margin-bottom: 20px;">You have total 4 saved items</div>
@@ -1552,12 +1554,30 @@ function handleTouchEnd(e) {
 // ─── Dashboard Card Carousel ─────────────────────────────────────────────────
 let dashCardSlide = 0;
 let dashTouchStartX = 0;
-function dashCardTouchStart(e) { dashTouchStartX = e.changedTouches[0].screenX; }
+let dashInterval = null;
+
+function startDashCarousel() {
+    if (dashInterval) clearInterval(dashInterval);
+    dashInterval = setInterval(() => {
+        dashCardSlide = (dashCardSlide + 1) % 3;
+        updateDashCards();
+    }, 3000);
+}
+
+function stopDashCarousel() {
+    if (dashInterval) clearInterval(dashInterval);
+}
+
+function dashCardTouchStart(e) {
+    dashTouchStartX = e.changedTouches[0].screenX;
+    stopDashCarousel();
+}
 function dashCardTouchEnd(e) {
     const diff = dashTouchStartX - e.changedTouches[0].screenX;
     if (diff > 50) { dashCardSlide = Math.min(dashCardSlide + 1, 2); }
     else if (diff < -50) { dashCardSlide = Math.max(dashCardSlide - 1, 0); }
     updateDashCards();
+    startDashCarousel();
 }
 function updateDashCards() {
     const track = document.getElementById('dashboard-card-track');
@@ -1673,9 +1693,40 @@ function navigateTo(view, isBack = false) {
         });
     }
 
+    const isSplash = state.currentView === 'splash';
     const mainContent = document.getElementById('main-content');
 
-    // Animation directions
+    if (isSplash) {
+        const logo = document.getElementById('splash-logo');
+        if (logo) {
+            gsap.to(logo, { scale: 8, opacity: 0, duration: 0.6, ease: 'power3.in' });
+        }
+        gsap.to(mainContent, {
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.3,
+            onComplete: () => {
+                state.currentView = view;
+                mainContent.innerHTML = views[view]();
+
+                if (view === 'dashboard' && window.startDashCarousel) {
+                    setTimeout(startDashCarousel, 100);
+                } else if (window.stopDashCarousel) {
+                    stopDashCarousel();
+                }
+
+                // Inject Global Navbar if applicable
+                const navbarHTML = getGlobalNavbarHTML(view);
+                if (navbarHTML) mainContent.insertAdjacentHTML('beforeend', navbarHTML);
+
+                // Smooth dissolve in
+                gsap.fromTo(mainContent, { opacity: 0, x: 0 }, { opacity: 1, duration: 0.4 });
+            }
+        });
+        return;
+    }
+
+    // Animation directions for normal navigation
     const outX = isBack ? 20 : -20;
     const inX = isBack ? -20 : 20;
 
@@ -1689,6 +1740,12 @@ function navigateTo(view, isBack = false) {
                 mainContent.innerHTML = views[view](state.lastVendorTitle || 'Vendors');
             } else {
                 mainContent.innerHTML = views[view]();
+            }
+
+            if (view === 'dashboard' && window.startDashCarousel) {
+                setTimeout(startDashCarousel, 100);
+            } else if (window.stopDashCarousel) {
+                stopDashCarousel();
             }
 
             // Inject Global Navbar if applicable
@@ -1995,6 +2052,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mount initial splash
     document.getElementById('main-content').innerHTML = views['splash']();
+
+    // Initial bounce/fade in for splash logo
+    gsap.fromTo('#splash-logo', { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'elastic.out(1, 0.5)' });
 });
 
 function toggleCustomSelect(event) {
@@ -2023,6 +2083,18 @@ function selectCountry(country, event) {
 
     // close dropdown
     clickedOption.closest('.custom-select').classList.remove('active');
+}
+
+function selectPricePill(el) {
+    const parent = el.parentElement;
+    parent.querySelectorAll('.tag-pill').forEach(pill => {
+        pill.classList.remove('selected');
+        pill.style.background = '';
+        pill.style.borderColor = '';
+    });
+    el.classList.add('selected');
+    el.style.background = 'white';
+    el.style.borderColor = 'var(--primary)';
 }
 
 function togglePill(event, element) {
@@ -2093,18 +2165,17 @@ function openFilterSheet(filterType) {
     } else if (filterType === 'Price') {
         sheetBody.innerHTML = `
             <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; justify-content: center;">
-                <div class="tag-pill">Under ₹20,000</div>
-                <div class="tag-pill selected" style="background: white; border-color: var(--primary);">₹20,000-₹50,000</div>
-                <div class="tag-pill">Above ₹50,000</div>
+                <div class="tag-pill" onclick="selectPricePill(this)">Under ₹20,000</div>
+                <div class="tag-pill selected" style="background: white; border-color: var(--primary);" onclick="selectPricePill(this)">₹20,000-₹50,000</div>
+                <div class="tag-pill" onclick="selectPricePill(this)">Above ₹50,000</div>
             </div>
             <div style="padding: 0 10px; margin-bottom: 24px;">
                 <div style="display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 16px; font-size: 14px;">
                     <span>₹20,000</span>
-                    <span>₹80,000</span>
+                    <span id="price-max-display">₹80,000</span>
                 </div>
-                <div style="position: relative; height: 4px; background: #E5E7EA; border-radius: 2px;">
-                    <div style="position: absolute; left: 0; right: 50%; height: 100%; background: var(--primary); border-radius: 2px;"></div>
-                    <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; background: white; border: 1px solid #E5E7EA; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></div>
+                <div style="position: relative; height: 24px; display: flex; align-items: center;">
+                    <input type="range" min="20000" max="150000" value="80000" step="5000" style="width: 100%; accent-color: var(--primary); cursor: pointer;" oninput="document.getElementById('price-max-display').innerText = '₹' + parseInt(this.value).toLocaleString()">
                 </div>
             </div>
         `;
