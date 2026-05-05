@@ -58,7 +58,7 @@ const state = {
 
 const views = {
     splash: () => `
-        <div class="onboarding-screen" style="background: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <div class="onboarding-screen" style="background: var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
             <div id="splash-logo" style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; font-size: 48px; font-weight: 700; color: #10B981; margin-bottom: 8px; letter-spacing: -1px; transform-origin: center;">
                 <div>Safar</div>
                 <div>Bazaar</div>
@@ -210,7 +210,7 @@ const views = {
         const isBuyer = state.role === 'buyer';
         const isSeller = state.role === 'seller';
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; height: 100%; display: flex; flex-direction: column;">
             <div style="background: var(--primary); color: var(--accent); padding: 60px 20px 40px; display: flex; flex-direction: column; min-height: 60vh; overflow-y: auto;">
                 <h1 style="font-size: 32px; margin-bottom: 8px; font-weight: 700;">Let's get started</h1>
                 <p style="font-size: 14px; opacity: 0.9; margin-bottom: 40px; line-height: 1.5;">Choose your role. You can switch anytime from your profile</p>
@@ -557,7 +557,7 @@ const views = {
     `,
 
     vendor_listing: (title) => `
-        <div class="onboarding-screen" style="background: #F3F4F6; position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: #F3F4F6; position: relative; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
             <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="z-index: 20;"></i>
             <div style="background: var(--primary); padding: 82px 20px 26px; color: var(--accent); min-height: 345px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
@@ -695,7 +695,7 @@ const views = {
         </div>
     `,
     vendor_detail: () => `
-        <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; position: relative;" id="vendor-detail-scroll" onscroll="handleVendorScroll()">
+        <div class="onboarding-screen" style="background: #F3F4F6; height: 100%; overflow-y: auto; position: relative;" id="vendor-detail-scroll" onscroll="handleVendorScroll()">
             <i class="ph ph-caret-left screen-back-btn screen-back-btn-white" onclick="goBack()" style="text-shadow: 0 1px 4px rgba(0,0,0,0.4);"></i>
             <!-- Hero Image -->
             <div style="position: relative; height: 300px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0;">
@@ -826,7 +826,7 @@ const views = {
         </div>
     `,
     my_requirements_list: () => `
-        <div class="onboarding-screen" style="background: #FFFFFF; height: 100vh; overflow-y: auto; position: relative;">
+        <div class="onboarding-screen" style="background: #FFFFFF; height: 100%; overflow-y: auto; position: relative;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-bottom: 30px">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 59px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 26px; font-weight: 700;">My Requirements</h1>
@@ -891,7 +891,7 @@ const views = {
         </div>
     `,
     dashboard: () => `
-        <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; padding-bottom: 100px; box-sizing: border-box;">
+        <div class="onboarding-screen" style="background: #F3F4F6; height: 100%; overflow-y: auto; padding-bottom: 100px; box-sizing: border-box;">
             <div style="background: var(--primary); color: var(--accent); height: 384px; min-height: 384px; flex-shrink: 0; position: relative; box-sizing: border-box;">
                 <div style="position: absolute; top: 85px; left: 20px; right: 20px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500;">
@@ -967,7 +967,7 @@ const views = {
     chat_list: () => {
         const chatArr = Object.values(state.chats);
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column; position: relative;">
+        <div class="onboarding-screen" style="background: white; height: 100%; display: flex; flex-direction: column; position: relative;">
             <i class="ph ph-caret-left screen-back-btn" onclick="goBack()"></i>
             <!-- Header -->
             <div style="padding: 80px 20px 16px; background: white; text-align: center; border-bottom: 1px solid #F0F0F0;">
@@ -1009,7 +1009,7 @@ const views = {
         const chat = state.chats[state.activeChatId];
         if (!chat) { setTimeout(() => navigateTo('chat_list'), 0); return '<div class="onboarding-screen"></div>'; }
         return `
-        <div class="onboarding-screen" style="background: #F5F5F5; height: 100vh; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: #F5F5F5; height: 100%; display: flex; flex-direction: column;">
             <!-- Chat Header -->
             <div style="background: white; padding: 50px 20px 14px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #F0F0F0; flex-shrink: 0;">
                 <i class="ph ph-caret-left" onclick="navigateTo('chat_list')" style="font-size: 22px; cursor: pointer; color: var(--text-main); flex-shrink: 0;"></i>
@@ -1159,7 +1159,7 @@ const views = {
         const user = getLoggedInUser();
         if (!user) { setTimeout(() => navigateTo('login'), 0); return '<div class="onboarding-screen"></div>'; }
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; height: 100%; display: flex; flex-direction: column;">
             <div style="display: flex; align-items: center; justify-content: center; padding: 50px 20px 20px; border-bottom: 1px solid #F3F4F6; position: relative;">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="position: absolute; top: 50px; left: 20px; font-size: 24px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Profile</h1>
@@ -1207,7 +1207,7 @@ const views = {
     },
     saved: () => {
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; height: 100%; display: flex; flex-direction: column;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-top: 20px; margin-bottom: 30px;">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 59px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 26px; font-weight: 700;">Saved</h1>
@@ -1237,7 +1237,7 @@ const views = {
     },
     notification: () => {
         return `
-        <div class="onboarding-screen" style="background: white; height: 100vh; overflow-y: auto; display: flex; flex-direction: column;">
+        <div class="onboarding-screen" style="background: white; height: 100%; overflow-y: auto; display: flex; flex-direction: column;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0;">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 50px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 20px; font-weight: 700;">Notification</h1>
@@ -1640,7 +1640,7 @@ function getGlobalNavbarHTML(view) {
     else if (view !== 'dashboard') activeTab = '';
 
     return `
-    <div id="main-navbar" style="position: fixed; bottom: 16px; left: 12px; right: 12px; margin: 0 auto; max-width: 448px; background: white; display: flex; justify-content: space-around; align-items: center; padding: 12px 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.15); z-index: 100; border-radius: 20px; transition: transform 0.3s ease;">
+    <div id="main-navbar" style="position: fixed; bottom: 16px; left: 12px; right: 12px; margin: 0 auto; max-width: 448px; background: white; display: flex; justify-content: space-around; align-items: center; padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 6px 24px rgba(0,0,0,0.15); z-index: 100; border-radius: 20px; transition: transform 0.3s ease;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer;" onclick="navigateTo('dashboard')">
             ${activeTab === 'home' ? `
             <div style="background: #E8F3EA; width: 52px; height: 40px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">

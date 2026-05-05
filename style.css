@@ -22,7 +22,12 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
+html, body {
+    /* Lock the root to prevent iOS rubber-banding */
+    height: 100%;
+    height: 100dvh; 
+    overflow: hidden; 
+    overscroll-behavior-y: none; /* Stops pull-to-refresh and bounce */
     background-color: #F3F4F6;
     /* background-color: var(--primary); */
     color: var(--text-main);
@@ -39,7 +44,8 @@ h4 {
 #app {
     width: 100%;
     max-width: 480px;
-    min-height: 100vh;
+    height: 100%;
+    height: 100dvh;
     background: var(--bg-light);
     margin: 0 auto;
     position: relative;
@@ -84,8 +90,12 @@ h4 {
 .onboarding-screen {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
     background: var(--white);
+    
+    /* Allow safe scrolling only inside the screen components */
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch;
 }
 
 .dot {
