@@ -1680,17 +1680,26 @@ function getGlobalNavbarHTML(view) {
     </div>`;
 }
 
-function navigateTo(view, isBack = false) {
+function navigateTo(view, isBack = false, skipHistory = false) {
     if (state.welcomeInterval) {
         clearInterval(state.welcomeInterval);
         state.welcomeInterval = null;
     }
 
-    if (!isBack && state.currentView !== view && state.currentView !== 'splash') {
-        state.history.push({
-            view: state.currentView,
-            title: state.lastVendorTitle
-        });
+    if (!isBack && state.currentView !== view) {
+        if (state.currentView !== 'splash') {
+            state.history.push({
+                view: state.currentView,
+                title: state.lastVendorTitle
+            });
+            if (!skipHistory) {
+                window.history.pushState({ view: view, title: state.lastVendorTitle }, '', '#' + view);
+            }
+        } else {
+            if (!skipHistory) {
+                window.history.replaceState({ view: view, title: state.lastVendorTitle }, '', '#' + view);
+            }
+        }
     }
 
     const isSplash = state.currentView === 'splash';
@@ -1789,11 +1798,7 @@ function attachNavbarScrollHide() {
 
 function goBack() {
     if (state.history.length > 0) {
-        const prevState = state.history.pop();
-        if (prevState.title) {
-            state.lastVendorTitle = prevState.title;
-        }
-        navigateTo(prevState.view, true);
+        window.history.back();
     }
 }
 
@@ -2266,6 +2271,20 @@ function closeFilterSheet() {
     });
     gsap.to(sheet, { bottom: '-100%', duration: 0.3, ease: 'power2.in' });
 }
+
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.view) {
+        if (state.history.length > 0) {
+            state.history.pop();
+        }
+        if (event.state.title) {
+            state.lastVendorTitle = event.state.title;
+        }
+        navigateTo(event.state.view, true, true);
+    } else if (state.currentView !== 'welcome' && state.currentView !== 'splash') {
+        navigateTo('welcome', true, true);
+    }
+});
 
 self.addEventListener("install", event => {
     event.waitUntil(
