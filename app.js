@@ -1865,6 +1865,15 @@ function getDynamicVendorTitle(prefix = '') {
         'restaurant': 'Restaurant'
     };
     const business = mapping[state.businessType] || 'Business';
+    if (prefix === 'Franchise') {
+        return `${business} Franchise`;
+    }
+    if (prefix === 'Outlet') {
+        return `${business} Outlet`;
+    }
+    if (prefix === 'Existing Setup') {
+        return `${business} Setup`;
+    }
     if (prefix) {
         return `${prefix} ${business} Vendors`.trim();
     }
