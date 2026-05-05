@@ -22,11 +22,9 @@
     font-family: 'Inter', sans-serif;
 }
 
-html, body {
-    height: 100%;
-    overflow-x: hidden;
-    overscroll-behavior-y: none;
+body {
     background-color: #F3F4F6;
+    /* background-color: var(--primary); */
     color: var(--text-main);
     line-height: 1.5;
 }
@@ -41,7 +39,7 @@ h4 {
 #app {
     width: 100%;
     max-width: 480px;
-    min-height: 100dvh;
+    min-height: 100vh;
     background: var(--bg-light);
     margin: 0 auto;
     position: relative;
@@ -86,10 +84,7 @@ h4 {
 .onboarding-screen {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
     background: var(--white);
 }
 
@@ -115,14 +110,14 @@ h4 {
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    min-height: 55dvh;
-    flex-shrink: 0;
+    flex: 1.4;
+    min-height: 0;
     position: relative;
 }
 
 .bottom-half {
-    min-height: 45dvh;
-    flex-shrink: 0;
+    flex: 1;
+    max-height: 400px;
     background: var(--white);
     padding: 30px 20px;
     border-radius: 0px 0px 0 0;
@@ -663,18 +658,4 @@ input:checked+.slider:before {
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-/* Media Queries for Small Screens */
-@media (max-height: 700px) {
-    .welcome-heading {
-        font-size: 26px !important;
-        margin-bottom: 8px !important;
-    }
-    .welcome-text {
-        font-size: 14px !important;
-        margin-bottom: 20px !important;
-    }
-    .bottom-half {
-        padding-bottom: 10px !important;
-    }
 }
