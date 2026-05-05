@@ -70,29 +70,29 @@ const views = {
             <div class="top-half" style="display: flex; align-items: center; justify-content: flex-start; background: var(--primary); padding-top: 50px;">
                 <div style="font-size: 32px; font-weight: 700; color: #10B981;">Safar Bazaar</div>
             </div>
-            <div class="bottom-half" style="position: relative; overflow: hidden; padding: 0; min-height: 45dvh">
-                <div id="welcome-track" style="display: flex; width: 300%; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
+            <div class="bottom-half" style="position: relative; overflow-x: hidden; padding: 0; min-height: 45dvh; display: flex; flex-direction: column;">
+                <div id="welcome-track" style="display: flex; width: 300%; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); flex-shrink: 0;" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)">
                     <div style="width: 33.333%; padding: 30px 20px; display: flex; flex-direction: column;">
-                        <h2 style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Grow Your Business<br>Across India</h2>
-                        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">Connect with verified vendors, find franchise opportunity and expand your network.</p>
+                        <h2 class="welcome-heading" style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Grow Your Business<br>Across India</h2>
+                        <p class="welcome-text" style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">Connect with verified vendors, find franchise opportunity and expand your network.</p>
                     </div>
                     <div style="width: 33.333%; padding: 30px 20px; display: flex; flex-direction: column;">
-                        <h2 style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Get 500+ Verified<br>Vendors</h2>
-                        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">All vendors are fully verified and background check before listing</p>
+                        <h2 class="welcome-heading" style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Get 500+ Verified<br>Vendors</h2>
+                        <p class="welcome-text" style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">All vendors are fully verified and background check before listing</p>
                     </div>
                     <div style="width: 33.333%; padding: 30px 20px; display: flex; flex-direction: column;">
-                        <h2 style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Get Full PAN India<br>Network</h2>
-                        <p style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">Have active presence across all 28 states and union territory</p>
+                        <h2 class="welcome-heading" style="font-size: 32px; margin-bottom: 12px; line-height: 1.2;">Get Full PAN India<br>Network</h2>
+                        <p class="welcome-text" style="color: var(--text-muted); font-size: 16px; margin-bottom: 30px;">Have active presence across all 28 states and union territory</p>
                     </div>
                 </div>
                 
-                <div style="position: absolute; bottom: 30px; left: 20px; right: 20px;">
-                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 30px;">
+                <div style="margin-top: auto; padding: 0 20px 30px;">
+                    <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 24px;">
                         <div id="dot-0" class="dot active"></div>
                         <div id="dot-1" class="dot"></div>
                         <div id="dot-2" class="dot"></div>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
                         <button class="btn btn-primary" onclick="navigateTo('signup')">Sign Up</button>
                         <button class="btn btn-secondary" onclick="navigateTo('login')">Login</button>
                     </div>
