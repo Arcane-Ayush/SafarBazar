@@ -594,63 +594,116 @@ const views = {
 
             <div id="vendor-list-container" style="flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; padding-bottom: 30px;">
                 ${(() => {
-            const isRefurbishedView = (state.lastVendorTitle || title) === 'Refurbished Products';
+            const generateVendors = (businessType, isFranchise, isRefurbished) => {
+                const data = {
+                    fitness: {
+                        franchise: [
+                            { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Gold\'s Gym Franchise', feat: 'Premium gyms, Full support' },
+                            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Cult.Fit Center', feat: 'Group classes, Branding' },
+                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Anytime Fitness', feat: '24/7 Access, Global reach' },
+                            { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Talwalkars Setup', feat: 'Traditional gyms' },
+                            { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Snap Fitness', feat: 'Compact models' }
+                        ],
+                        outlet: [
+                            { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Fitness Solutions', feat: 'Commercial gyms' },
+                            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'FitTech Equipments', feat: 'Cardio machines' },
+                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'ProGym Makers', feat: 'Premium Gyms' },
+                            { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Elite Gym Setups', feat: 'Functional training' },
+                            { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'SportZone India', feat: 'Multi-sport setups' }
+                        ]
+                    },
+                    restaurant: {
+                        franchise: [
+                            {
+                                img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop', name: 'McDonald\'s Franchise', feat: 'Global brand, Complete training'
+                            },
+                            { img: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop', name: 'Subway Outlet Setup', feat: 'Quick setup, High ROI' },
+                            {
+                                img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop', name: 'Domino\'s Pizza Partner', feat: 'Delivery model'
+                            },
+                            { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop', name: 'KFC Franchise', feat: 'Premium locations' },
+                            { img: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop', name: 'Starbucks Partner', feat: 'Premium cafe' }
+                        ],
+                        outlet: [
+                            { img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop', name: 'Gourmet Kitchen Setups', feat: 'Commercial Kitchens' },
+                            { img: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=600&auto=format&fit=crop', name: 'Bistro Furniture Outlet', feat: 'Dining tables, Decor' },
+                            { img: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop', name: 'Cafe Equipments Co.', feat: 'Espresso machines' },
+                            { img: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=600&auto=format&fit=crop', name: 'Bar Setup Solutions', feat: 'Bar counters, Chillers' },
+                            { img: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=600&auto=format&fit=crop', name: 'Fast Food Kiosks', feat: 'Compact cooking stations' }
+                        ]
+                    },
+                    amusement: {
+                        franchise: [
+                            { img: 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop', name: 'Timezone Partner', feat: 'Arcade games, Prizes' },
+                            { img: 'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop', name: 'Smaaash Center', feat: 'VR & Bowling' },
+                            { img: 'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop', name: 'Fun City Setup', feat: 'Kids play area' },
+                            { img: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop', name: 'Mystery Rooms Franchise', feat: 'Escape rooms' },
+                            { img: 'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop', name: 'Trampoline Park', feat: 'Active entertainment' }
+                        ],
+                        outlet: [
+                            { img: 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop', name: 'Arcade Machines Direct', feat: 'Coin-op games' },
+                            { img: 'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop', name: 'VR Setups India', feat: 'VR Pods, Simulators' },
+                            { img: 'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop', name: 'Soft Play Equipments', feat: 'Indoor playgrounds' },
+                            { img: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop', name: 'Bowling Alley Makers', feat: 'Lanes, Pinsetters' },
+                            { img: 'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop', name: 'Amusement Rides Co.', feat: 'Carousel, Bumper cars' }
+                        ]
+                    },
+                    sports: {
+                        franchise: [
+                            { img: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop', name: 'Decathlon Partner', feat: 'Retail sports goods' },
+                            { img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop', name: 'Turf Town Franchise', feat: 'Futsal arenas' },
+                            { img: 'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop', name: 'Badminton Hub', feat: 'Wooden courts' },
+                            { img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop', name: 'Tennis Academy Setup', feat: 'Clay/Hard courts' },
+                            { img: 'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop', name: 'Swimming Pool Partner', feat: 'Temperature controlled' }
+                        ],
+                        outlet: [
+                            { img: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop', name: 'Sports Flooring Pro', feat: 'Turf, Synthetic floors' },
+                            { img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop', name: 'Lighting Solutions', feat: 'Floodlights, LED' },
+                            { img: 'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop', name: 'Court Accessories', feat: 'Nets, Posts, Fencing' },
+                            { img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop', name: 'Locker Room Setups', feat: 'Benches, Lockers' },
+                            { img: 'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop', name: 'Sports Gear Wholesale', feat: 'Balls, Rackets, Kits' }
+                        ]
+                    }
+                };
 
-            const fitnessVendors = [
-                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Fitness Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.3', reviews: '120', price: 'Starting from 30 Lakhs', feat: 'Commercial gyms, Turnkey setups' },
-                { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'FitTech Equipments', loc: 'Delhi NCR', rating: '4.1', reviews: '85', price: 'Starting from 15 Lakhs', feat: 'Cardio machines, Weights' },
-                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'ProGym Makers', loc: 'Mumbai, Maharashtra', rating: '4.8', reviews: '240', price: 'Starting from 40 Lakhs', feat: 'Premium Gyms, Crossfit' },
-                { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Elite Gym Setups', loc: 'Bengaluru, Karnataka', rating: '4.5', reviews: '160', price: 'Starting from 25 Lakhs', feat: 'Functional training, Yoga zones' },
-                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'SportZone India', loc: 'Chennai, Tamil Nadu', rating: '4.2', reviews: '98', price: 'Starting from 18 Lakhs', feat: 'Multi-sport, School setups' },
-            ];
-            const refurbishedFitness = [
-                { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Refurbished Treadmill XR', loc: 'Delhi NCR', rating: '4.6', reviews: '14', price: '₹25,000', feat: 'Cardio, Good Condition' },
-                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned Bench Press', loc: 'Noida, UP', rating: '4.8', reviews: '8', price: '₹12,000', feat: 'Strength, Premium' },
-                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Commercial Cross Trainer', loc: 'Mumbai', rating: '4.5', reviews: '22', price: '₹45,000', feat: 'Cardio, 1 Year Warranty' },
-                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Exercise Bike V2', loc: 'Bengaluru', rating: '4.2', reviews: '11', price: '₹18,000', feat: 'Cardio, Digital Display' }
-            ];
-            const franchiseVendors = [
-                { img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop', name: 'McDonald\'s Franchise', loc: 'Pan India', rating: '4.9', reviews: '1.2k', price: 'Starting from 1.5 Cr', feat: 'Global brand, Complete training' },
-                { img: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop', name: 'Subway Outlet Setup', loc: 'Delhi NCR', rating: '4.7', reviews: '850', price: 'Starting from 45 Lakhs', feat: 'Quick setup, High ROI' },
-                {
-                    img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop', name: 'Domino\'s Pizza Partner', loc: 'Mumbai, Maharashtra', rating: '4.8', reviews: '920', price: 'Starting from 80 Lakhs', feat: 'Delivery model, Brand backing'
-                },
-                { img: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop', name: 'KFC Franchise', loc: 'Bengaluru, Karnataka', rating: '4.9', reviews: '1.5k', price: 'Starting from 2 Cr', feat: 'Premium locations, Full support' },
-                { img: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop', name: 'Starbucks Partner', loc: 'Tier 1 Cities', rating: '4.9', reviews: '2.1k', price: 'Starting from 3 Cr', feat: 'Premium cafe, Global standards' }
-            ];
-            const outletVendors = [
-                { img: 'https://upload.wikimedia.org/wikipedia/commons/6/6c/JC_Penney_store%2C_Aventura_Mall_%28Aventura%2C_Florida%2C_2006%29.jpg', name: 'JCPenney Store Solutions', loc: 'Noida, Uttar Pradesh', rating: '4.6', reviews: '340', price: 'Starting from 50 Lakhs', feat: 'Retail fixtures, Visual merch' },
-                { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop', name: 'ZARA Retail Setup', loc: 'Delhi NCR', rating: '4.8', reviews: '560', price: 'Starting from 1.2 Cr', feat: 'Premium clothing store' },
-                { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'H&M Franchise Store', loc: 'Mumbai, Maharashtra', rating: '4.7', reviews: '420', price: 'Starting from 1 Cr', feat: 'Complete fashion retail' },
-                { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Reliance Smart Point', loc: 'Pan India', rating: '4.5', reviews: '890', price: 'Starting from 30 Lakhs', feat: 'Grocery & Essentials' },
-                { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Croma Tech Outlet', loc: 'Tier 1 & 2', rating: '4.8', reviews: '670', price: 'Starting from 80 Lakhs', feat: 'Electronics retail setup' }
-            ];
+                const prices = ['15 Lakhs', '30 Lakhs', '45 Lakhs', '80 Lakhs', '1.2 Cr', '2 Cr'];
+                const ratings = ['4.1', '4.3', '4.5', '4.7', '4.8', '4.9'];
+                const locations = ['Delhi NCR', 'Mumbai, MH', 'Bengaluru, KA', 'Noida, UP', 'Pan India'];
+                const reviews = ['85', '120', '240', '560', '890', '1.2k'];
 
-            const refurbishedFranchise = [
-                {
-                    img: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned McDonald\'s Kiosk', loc: 'Delhi NCR', rating: '4.6', reviews: '12', price: '₹12 Lakhs', feat: 'Fully equipped, Movable'
-                },
-                { img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop', name: 'Refurbished Subway Setup', loc: 'Pune, MH', rating: '4.7', reviews: '25', price: '₹8 Lakhs', feat: 'Kitchen setup, Counters' }
-            ];
-            const refurbishedOutlet = [
-                { img: 'https://images.unsplash.com/photo-1567449303078-57ad995bd3fa?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned JCPenney Racks', loc: 'Noida, UP', rating: '4.5', reviews: '40', price: '₹45,000', feat: 'Wood & Glass, LED lit' },
-                { img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop', name: 'Refurbished ZARA Mannequins', loc: 'Gurugram', rating: '4.6', reviews: '18', price: '₹22,000', feat: 'Premium finish, Set of 10' }
-            ];
+                const bType = businessType || 'fitness';
+                const bData = data[bType] || data.fitness;
+
+                const baseItems = isFranchise ? bData.franchise : bData.outlet;
+
+                return baseItems.map((item, i) => {
+                    let finalName = item.name;
+                    let finalPrice = `Starting from ${prices[i % prices.length]}`;
+                    let finalFeat = item.feat;
+
+                    if (isRefurbished) {
+                        finalName = `Refurbished ${item.name}`;
+                        finalPrice = `₹${(i + 1) * 15},000`;
+                        finalFeat = `Pre-owned, Good Condition`;
+                    }
+
+                    return {
+                        img: item.img,
+                        name: finalName,
+                        loc: locations[i % locations.length],
+                        rating: ratings[i % ratings.length],
+                        reviews: reviews[i % reviews.length],
+                        price: finalPrice,
+                        feat: finalFeat
+                    };
+                });
+            };
 
             const currentTitle = state.lastVendorTitle || title;
+            const isRefurbishedView = currentTitle === 'Refurbished Products' || state.showRefurbishedItems;
+            const isFranchise = currentTitle === 'Franchise Vendors' || state.howToStart === 'franchise';
 
-            let primaryVendors = fitnessVendors;
-            let refurbishedVendors = refurbishedFitness;
-
-            if (currentTitle === 'Franchise Vendors' || state.howToStart === 'franchise') {
-                primaryVendors = franchiseVendors;
-                refurbishedVendors = refurbishedFranchise;
-            } else if (currentTitle === 'Outlet Vendors' || state.howToStart === 'existing' || state.howToStart === 'outlet') {
-                primaryVendors = outletVendors;
-                refurbishedVendors = refurbishedOutlet;
-            }
-
-            const listToUse = (isRefurbishedView || state.showRefurbishedItems) ? refurbishedVendors : primaryVendors;
+            const listToUse = generateVendors(state.businessType, isFranchise, isRefurbishedView);
 
             return listToUse.map(v => `
                 <div style="background: white; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
