@@ -878,71 +878,98 @@ const views = {
             </div>
         </div>
     `,
-    my_requirements_list: () => `
+    my_requirements_list: () => {
+        const type = state.businessType || 'fitness';
+        const isFranchise = state.howToStart === 'franchise';
+        const titles = {
+            fitness: isFranchise ? ['Gold\s Gym Franchise', 'Cult.Fit Partner', 'Anytime Fitness Setup', 'Snap Fitness Unit', 'Talwalkars Outlet'] : ['Fitness Equipment', 'Cardio Machines', 'Strength Training setup', 'Crossfit Equipments', 'Gym Layout Services'],
+            restaurant: isFranchise ? ['McDonald\'s Franchise', 'Subway Setup', 'Domino\'s Partner', 'KFC Franchise', 'Starbucks Cafe'] : ['Commercial Kitchen', 'Bistro Furniture', 'Espresso Machines', 'Bar Counters', 'Fast Food Kiosk'],
+            amusement: isFranchise ? ['Timezone Partner', 'Smaaash Center', 'Fun City Setup', 'Mystery Rooms', 'Trampoline Park'] : ['Arcade Machines', 'VR Pods', 'Indoor Playgrounds', 'Bowling Alleys', 'Bumper Cars'],
+            sports: isFranchise ? ['Decathlon Partner', 'Turf Town Franchise', 'Badminton Hub', 'Tennis Academy', 'Swimming Pool Setup'] : ['Sports Flooring', 'Floodlights LED', 'Court Accessories', 'Locker Rooms', 'Sports Gear Wholesale']
+        };
+
+        const images = {
+            fitness: isFranchise ? [
+                'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop'
+            ] : [
+                'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop'
+            ],
+            restaurant: isFranchise ? [
+                'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=600&auto=format&fit=crop'
+            ] : [
+                'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=600&auto=format&fit=crop'
+            ],
+            amusement: isFranchise ? [
+                'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop'
+            ] : [
+                'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop'
+            ],
+            sports: isFranchise ? [
+                'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop'
+            ] : [
+                'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop'
+            ]
+        };
+
+        const tData = titles[type];
+        const iData = images[type];
+
+        return `
         <div class="onboarding-screen" style="background: #FFFFFF; height: 100vh; overflow-y: auto; position: relative;">
             <div style="background: white; padding: 50px 20px 20px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #F3F4F6; flex-shrink: 0; margin-bottom: 30px">
                 <i class="ph ph-caret-left screen-back-btn" onclick="goBack()" style="top: 59px; left: 20px; color: var(--text-main);"></i>
                 <h1 style="font-size: 26px; font-weight: 700;">My Requirements</h1>
             </div>
             <div style="padding: 20px; background: white;">
+                ${tData.map((title, i) => `
                 <div style="margin-bottom: 16px;">
                     <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
+                        <div style="height: 140px; background: url('${iData[i]}') center/cover;"></div>
                         <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Fitness Equipment</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">3 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 26th February, 2026</div>
+                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">${title}</h3>
+                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">${Math.floor(Math.random() * 10 + 2)} vendors matched</div>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted recently</div>
                             <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
                         </div>
                     </div>
                 </div>
-                <div style="margin-bottom: 16px;">
-                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
-                        <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Cardio Machines</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">5 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 24th February, 2026</div>
-                            <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-bottom: 16px;">
-                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
-                        <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Strength Training setup</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">12 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 15th February, 2026</div>
-                            <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-bottom: 16px;">
-                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
-                        <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Crossfit Equipments</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">2 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 10th February, 2026</div>
-                            <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-bottom: 16px;">
-                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                        <div style="height: 140px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover;"></div>
-                        <div style="padding: 16px;">
-                            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Gym Layout Services</h3>
-                            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">8 vendors matched</div>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 16px;">Posted on 5th February, 2026</div>
-                            <button class="btn btn-primary" style="padding: 12px; font-size: 14px; width: 100%; color: #FFFFFF !important;" onclick="navigateTo('vendor_detail')">View Details</button>
-                        </div>
-                    </div>
-                </div>
+                `).join('')}
             </div>
         </div>
-    `,
+        `;
+    },
     dashboard: () => `
         <div class="onboarding-screen" style="background: #F3F4F6; height: 100vh; overflow-y: auto; padding-bottom: 100px; box-sizing: border-box;">
             <div style="background: var(--primary); color: var(--accent); height: 384px; min-height: 384px; flex-shrink: 0; position: relative; box-sizing: border-box;">
@@ -1945,7 +1972,17 @@ function setBusinessType(el, type) {
         if (state.isChangingBusiness) {
             state.isChangingBusiness = false;
             // Go directly back to vendor listing with updated dynamic title
-            showVendorListing(getDynamicVendorTitle());
+            let title = getDynamicVendorTitle();
+            if (state.lastVendorTitle === 'Refurbished Products') {
+                title = 'Refurbished Products';
+            } else if (state.howToStart === 'franchise') {
+                title = getDynamicVendorTitle('Franchise');
+            } else if (state.howToStart === 'existing_outlet' || state.howToStart === 'outlet') {
+                title = getDynamicVendorTitle('Outlet');
+            } else if (state.setupType === 'existing') {
+                title = getDynamicVendorTitle('Existing Setup');
+            }
+            showVendorListing(title);
         } else {
             navigateTo('location');
         }
