@@ -600,14 +600,14 @@ const views = {
                         franchise: [
                             { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Gold\'s Gym Franchise', feat: 'Premium gyms, Full support' },
                             { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Cult.Fit Center', feat: 'Group classes, Branding' },
-                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Anytime Fitness', feat: '24/7 Access, Global reach' },
+                            { img: 'Images/CardioMachines.jpg', name: 'Anytime Fitness', feat: '24/7 Access, Global reach' },
                             { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Talwalkars Setup', feat: 'Traditional gyms' },
                             { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Snap Fitness', feat: 'Compact models' }
                         ],
                         outlet: [
                             { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Fitness Solutions', feat: 'Commercial gyms' },
-                            { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'FitTech Equipments', feat: 'Cardio machines' },
-                            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'ProGym Makers', feat: 'Premium Gyms' },
+                            { img: 'Images/CardioMachines.jpg', name: 'FitTech Equipments', feat: 'Cardio machines' },
+                            { img: 'Images/CardioMachines.jpg', name: 'ProGym Makers', feat: 'Premium Gyms' },
                             { img: 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop', name: 'Elite Gym Setups', feat: 'Functional training' },
                             { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'SportZone India', feat: 'Multi-sport setups' }
                         ]
@@ -635,33 +635,33 @@ const views = {
                     amusement: {
                         franchise: [
                             { img: 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop', name: 'Timezone Partner', feat: 'Arcade games, Prizes' },
-                            { img: 'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop', name: 'Smaaash Center', feat: 'VR & Bowling' },
-                            { img: 'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop', name: 'Fun City Setup', feat: 'Kids play area' },
-                            { img: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop', name: 'Mystery Rooms Franchise', feat: 'Escape rooms' },
-                            { img: 'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop', name: 'Trampoline Park', feat: 'Active entertainment' }
+                            { img: 'Images/VRsetup.jpg', name: 'Smaaash Center', feat: 'VR & Bowling' },
+                            { img: 'Images/FunPlay.jpg', name: 'Fun City Setup', feat: 'Kids play area' },
+                            { img: 'Images/MysteryRoom.jpg', name: 'Mystery Rooms Franchise', feat: 'Escape rooms' },
+                            { img: 'Images/Trampoline.jpg', name: 'Trampoline Park', feat: 'Active entertainment' }
                         ],
                         outlet: [
                             { img: 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop', name: 'Arcade Machines Direct', feat: 'Coin-op games' },
-                            { img: 'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop', name: 'VR Setups India', feat: 'VR Pods, Simulators' },
-                            { img: 'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop', name: 'Soft Play Equipments', feat: 'Indoor playgrounds' },
-                            { img: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop', name: 'Bowling Alley Makers', feat: 'Lanes, Pinsetters' },
-                            { img: 'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop', name: 'Amusement Rides Co.', feat: 'Carousel, Bumper cars' }
+                            { img: 'Images/VRsetup.jpg', name: 'VR Setups India', feat: 'VR Pods, Simulators' },
+                            { img: 'Images/FunPlay.jpg', name: 'Soft Play Equipments', feat: 'Indoor playgrounds' },
+                            { img: 'Images/Bowling.jpg', name: 'Bowling Alley Makers', feat: 'Lanes, Pinsetters' },
+                            { img: 'Images/Trampoline.jpg', name: 'Amusement Rides Co.', feat: 'Carousel, Bumper cars' }
                         ]
                     },
                     sports: {
                         franchise: [
                             { img: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop', name: 'Decathlon Partner', feat: 'Retail sports goods' },
-                            { img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop', name: 'Turf Town Franchise', feat: 'Futsal arenas' },
-                            { img: 'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop', name: 'Badminton Hub', feat: 'Wooden courts' },
+                            { img: 'Images/TurfTown.png', name: 'Turf Town Franchise', feat: 'Futsal arenas' },
+                            { img: 'Images/BadmintonHub.png', name: 'Badminton Hub', feat: 'Wooden courts' },
                             { img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop', name: 'Tennis Academy Setup', feat: 'Clay/Hard courts' },
-                            { img: 'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop', name: 'Swimming Pool Partner', feat: 'Temperature controlled' }
+                            { img: 'Images/SwimmingPool.jpg', name: 'Swimming Pool Partner', feat: 'Temperature controlled' }
                         ],
                         outlet: [
                             { img: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop', name: 'Sports Flooring Pro', feat: 'Turf, Synthetic floors' },
-                            { img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop', name: 'Lighting Solutions', feat: 'Floodlights, LED' },
-                            { img: 'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop', name: 'Court Accessories', feat: 'Nets, Posts, Fencing' },
+                            { img: 'Images/TurfTown.png', name: 'Lighting Solutions', feat: 'Floodlights, LED' },
+                            { img: 'Images/BadmintonHub.png', name: 'Court Accessories', feat: 'Nets, Posts, Fencing' },
                             { img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop', name: 'Locker Room Setups', feat: 'Benches, Lockers' },
-                            { img: 'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop', name: 'Sports Gear Wholesale', feat: 'Balls, Rackets, Kits' }
+                            { img: 'Images/SportsGear.png', name: 'Sports Gear Wholesale', feat: 'Balls, Rackets, Kits' }
                         ]
                     }
                 };
@@ -819,7 +819,7 @@ const views = {
                 <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; padding: 0 20px;">View Photos</h3>
                 <div style="display: flex; gap: 14px; overflow-x: auto; padding: 0 20px 8px;" class="hide-scrollbar">
                     <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
-                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
+                    <div style="width: 300px; height: 230px; border-radius: 18px; background: url('Images/CardioMachines.jpg') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
                     <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
                     <div style="width: 300px; height: 230px; border-radius: 18px; background: url('https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop') center/cover; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06);"></div>
                 </div>
@@ -892,12 +892,12 @@ const views = {
             fitness: isFranchise ? [
                 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop',
                 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop',
+                'Images/CardioMachines.jpg',
                 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop',
                 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop'
             ] : [
                 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop',
+                'Images/CardioMachines.jpg',
                 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop',
                 'https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=600&auto=format&fit=crop',
                 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop'
@@ -917,29 +917,29 @@ const views = {
             ],
             amusement: isFranchise ? [
                 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop',
+                'Images/VRsetup.jpg',
+                'Images/FunPlay.jpg',
                 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop'
+                'Images/Trampoline.jpg'
             ] : [
                 'https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1533246282875-01e4a2a19ff2?q=80&w=600&auto=format&fit=crop',
+                'Images/VRsetup.jpg',
+                'Images/FunPlay.jpg',
                 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1518063071295-d2abf8b868e8?q=80&w=600&auto=format&fit=crop'
+                'Images/Trampoline.jpg'
             ],
             sports: isFranchise ? [
                 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop',
+                'Images/TurfTown.png',
+                'Images/BadmintonHub.png',
                 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop'
+                'Images/SportsGear.png'
             ] : [
                 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1554068865-24cecd4e34d8?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1622279457486-69d73ad76801?q=80&w=600&auto=format&fit=crop',
+                'Images/TurfTown.png',
+                'Images/BadmintonHub.png',
                 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop',
-                'https://images.unsplash.com/photo-1518605368461-1ee12522201e?q=80&w=600&auto=format&fit=crop'
+                'Images/SportsGear.png'
             ]
         };
 
@@ -1014,7 +1014,7 @@ const views = {
                     <div id="dashboard-card-track" style="display: flex; transition: transform 0.4s ease; width: 300%;" ontouchstart="dashCardTouchStart(event)" ontouchend="dashCardTouchEnd(event)">
                         ${[
             { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
-            { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Cardio Machines', matched: '5 vendors matched', date: 'Posted on 24th February, 2026' },
+            { img: './Images/CardioMachines.jpg', name: 'cardio machines', matched: '5 vendors matched', date: 'posted on 24th february, 2026' },
             { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Strength Training Setup', matched: '12 vendors matched', date: 'Posted on 15th February, 2026' },
         ].map(c => `
                         <div style="width: 33.333%; padding: 0 2px; box-sizing: border-box; flex-shrink: 0;">
@@ -1297,7 +1297,7 @@ const views = {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${[
                 { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
-                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
+                { img: 'Images/CardioMachines.jpg', name: 'Fitness Equipment', matched: '3 vendors matched', date: 'Posted on 26th February, 2026' },
                 { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Premium Treadmill', matched: '2 vendors matched', date: 'Posted on 1st March, 2026' },
                 { img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600&auto=format&fit=crop', name: 'Crossfit Setup', matched: '5 vendors matched', date: 'Posted on 5th March, 2026' }
             ].map(v => `
@@ -2319,7 +2319,7 @@ function openFilterSheet(filterType) {
                 ${[
                 { img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=600&auto=format&fit=crop', name: 'Refurbished Treadmill XR', price: '₹25,000', loc: 'Delhi NCR' },
                 { img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop', name: 'Pre-owned Bench Press', price: '₹12,000', loc: 'Noida' },
-                { img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop', name: 'Commercial Cross Trainer', price: '₹45,000', loc: 'Mumbai' }
+                { img: 'Images/CardioMachines.jpg', name: 'Commercial Cross Trainer', price: '₹45,000', loc: 'Mumbai' }
             ].map(c => `
                 <div style="display: flex; gap: 12px; background: white; border: 1.5px solid #F3F4F6; border-radius: 16px; padding: 12px; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,0.02);">
                     <div style="width: 80px; height: 80px; border-radius: 10px; background: url('${c.img}') center/cover; flex-shrink: 0;"></div>
